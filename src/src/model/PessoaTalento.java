@@ -1,5 +1,6 @@
 package model;
-
+import javax.swing.table.AbstractTableModel;
+import java.util.Vector;
 public  class PessoaTalento extends Entity {
 
     private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
