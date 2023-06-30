@@ -1,26 +1,30 @@
 package repository;
 
-import java.sql.SQLException;
+import model.PessoaTalento;
+import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
-public class PessoaTalentoDao implements GenericDao{
-    @Override
-    public void salvar(Object objeto) {
+public class PessoaTalentoDao {
+
+    static List<PessoaTalento> pessoaTalentoList = new ArrayList<>();
+
+    public static void salvarPessoaTalento(PessoaTalento pessoaTalento){
+        pessoaTalentoList.add(pessoaTalento);
+    }
+
+    public static List<PessoaTalento> buscarTodasPessoasTalento(){
+        return pessoaTalentoList;
+    }
+
+    public static void alterarPessoaTalenti(PessoaTalento pessoaTalento){
 
     }
 
-    @Override
-    public void remover(Object objeto) throws SQLException, ClassNotFoundException {
-
+    public static void excluirPessoasTalento(PessoaTalento pessoaTalento){
+        pessoaTalentoList.remove(pessoaTalento);
+        JOptionPane.showMessageDialog(null,"Mentor removido com sucesso!");
     }
 
-    @Override
-    public List buscarTodos() throws SQLException, ClassNotFoundException {
-        return null;
-    }
 
-    @Override
-    public List buscarPorNomes(String nome) {
-        return null;
-    }
 }
