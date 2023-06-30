@@ -62,7 +62,7 @@ public class RelatorioPessoaTalento extends AbstractTableModel{
             case INDEX_ESPECIALIDADE:
                 return registroPessoa.getEspecialidade();
             case INDEX_HISTORICODEMENTORIAS:
-                return registroPessoa.getEspecialidade();
+                return registroPessoa.getHistorioDeMentorias();
             default:
                 return new Object();
         }
