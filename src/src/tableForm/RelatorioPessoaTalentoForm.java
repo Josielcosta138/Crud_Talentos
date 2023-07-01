@@ -1,6 +1,8 @@
+package tableForm;
+
 import model.*;
+import modelController.Cadastros;
 import relatorios.RelatorioPessoaTalento;
-import repository.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +10,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.Vector;
-import javax.swing.table.TableColumn;
 
 import static com.sun.javafx.fxml.expression.Expression.add;
 
@@ -48,7 +49,7 @@ public class RelatorioPessoaTalentoForm extends JPanel{
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent evt) {
                     frame.setVisible(false);
-                    Main.chamaMenuPrincipal();
+                    Cadastros.chamaMenuPrincipal();
                 }
 
             });
