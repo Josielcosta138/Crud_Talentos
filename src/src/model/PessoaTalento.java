@@ -13,9 +13,10 @@ public  class PessoaTalento extends Entity {
     private String linkdin;
     private String especialidade;
     private String historioDeMentorias;
+    private EnumStartup enumStartup;
 
 
-    public PessoaTalento(EnumtipoAreaAtuacao enumtipoAreaAtuacao, String nome, EnumSexo enumSexo, int idade, String cidade, String estado, String email, String linkdin, String especialidade, String historioDeMentorias) {
+    public PessoaTalento(EnumtipoAreaAtuacao enumtipoAreaAtuacao, String nome, EnumSexo enumSexo, int idade, String cidade, String estado, String email, String linkdin, String especialidade, String historioDeMentorias, EnumStartup enumStartup) {
         this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
         this.nome = nome;
         this.enumSexo = enumSexo;
@@ -26,6 +27,7 @@ public  class PessoaTalento extends Entity {
         this.linkdin = linkdin;
         this.especialidade = especialidade;
         this.historioDeMentorias = historioDeMentorias;
+        this.enumStartup = enumStartup;
     }
 
     public EnumtipoAreaAtuacao getEnumtipoAreaAtuacao() {
@@ -108,12 +110,20 @@ public  class PessoaTalento extends Entity {
         this.historioDeMentorias = historioDeMentorias;
     }
 
+    public EnumStartup getEnumStartup() {
+        return enumStartup;
+    }
+
+    public void setEnumStartup(EnumStartup enumStartup) {
+        this.enumStartup = enumStartup;
+    }
+
     @Override
     public String toString() {
         return "PessoaTalento{" +
-                "tipoAtuacao=" + enumtipoAreaAtuacao +
+                "enumtipoAreaAtuacao=" + enumtipoAreaAtuacao +
                 ", nome='" + nome + '\'' +
-                ", sexo=" + enumSexo +
+                ", enumSexo=" + enumSexo +
                 ", idade=" + idade +
                 ", cidade='" + cidade + '\'' +
                 ", estado='" + estado + '\'' +
@@ -121,6 +131,7 @@ public  class PessoaTalento extends Entity {
                 ", linkdin='" + linkdin + '\'' +
                 ", especialidade='" + especialidade + '\'' +
                 ", historioDeMentorias='" + historioDeMentorias + '\'' +
+                ", enumStartup=" + enumStartup +
                 '}';
     }
 }
