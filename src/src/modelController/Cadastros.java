@@ -1,9 +1,6 @@
 package modelController;
 
-import model.EnumSexo;
-import model.EnumStartup;
-import model.EnumtipoAreaAtuacao;
-import model.PessoaTalento;
+import model.*;
 import repository.PessoaTalentoDao;
 import tableForm.*;
 import javax.swing.*;
@@ -34,7 +31,8 @@ public class Cadastros {
                 int opcaoSair = JOptionPane.showOptionDialog(null, "Deseja realmente sair ?",
                         "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                 if (opcaoSair == JOptionPane.YES_NO_OPTION){
-                    System.exit(0);
+                    Login.exibirTelaLogin();
+                    //System.exit(0);
                 }else {
                     chamaMenuPrincipal();
                 }
@@ -219,10 +217,14 @@ public class Cadastros {
     }
 
 
-    private static void chamaRelatoriosPessoasTalentos(){
+    private static void chamaRelatoriosPessoasTalentos() {
         List<PessoaTalento> pessoaTalentos = PessoaTalentoDao.buscarTodasPessoasTalento();
-        RelatorioPessoaTalentoForm.emitirRelatorio(pessoaTalentos);
 
+        if (pessoaTalentos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Lista Pessoa Talento esta Vazia!", "Erro", JOptionPane.INFORMATION_MESSAGE);
+            chamaMenuPrincipal();
+        } else {
+            RelatorioPessoaTalentoForm.emitirRelatorio(pessoaTalentos);
+        }
     }
-
 }
