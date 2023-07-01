@@ -1,7 +1,5 @@
-import model.EnumSexo;
-import model.EnumtipoAreaAtuacao;
-import model.PessoaTalento;
-import repository.PessoaTalentoDao;
+import repository.*;
+import model.*;
 
 import javax.swing.*;
 import java.util.List;
@@ -15,7 +13,7 @@ public class Main {
     }
 
 
-    private static void chamaMenuPrincipal(){
+    protected static void chamaMenuPrincipal(){
         String[] opcoesMenu = {"Cadastro de Mentoria", "Relatorios", "Sair"};
         int opcao = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Menu Principal",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
@@ -41,12 +39,18 @@ public class Main {
         private static void chamaCadastroMentoria () {
 
             String nome = JOptionPane.showInputDialog(null, "Informe o seu nome: ");
+            if (nome == null) {
+                chamaMenuPrincipal();
+            }
 
             EnumSexo pessoaTalento = EnumSexo.MASCULINO;
             Object[] selectionStatusSexo = {"MASCULINO", "FEMININO", "OUTROS"};
             String initialSelectionStatusSexo = pessoaTalento.toString();
             Object selectionStatus = JOptionPane.showInputDialog(null, "Selecione seu sexo:",
                     "Lista de Sexo", JOptionPane.QUESTION_MESSAGE, null, selectionStatusSexo, initialSelectionStatusSexo);
+            if (selectionStatus == null) {
+                chamaMenuPrincipal();
+            }
             EnumSexo sexo = EnumSexo.MASCULINO;
             if (selectionStatus.equals("FEMININO")) {
                 sexo = EnumSexo.FEMININO;
@@ -60,8 +64,11 @@ public class Main {
             String initialSelectionStatusAtuacao = pessoaTalentoAtuacao.toString();
             Object selectionStatus2 = JOptionPane.showInputDialog(null, "Selecione sua Área de Atuação.",
                     "Lista de Especialidades", JOptionPane.QUESTION_MESSAGE, null, selectionStatusAtuacao, initialSelectionStatusAtuacao);
+            if (selectionStatus2 == null) {
+                chamaMenuPrincipal();
+            }
             EnumtipoAreaAtuacao atuacao = EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA;
-            if (selectionStatus2.equals("MARKTING")) {
+            if (selectionStatus2.equals("MARKETING")) {
                 atuacao = EnumtipoAreaAtuacao.MARKTING;
             } else if (selectionStatus2.equals("DIREITO EMPRESARIAL")) {
                 atuacao = EnumtipoAreaAtuacao.DIREITO_EMPRESARIAL;
@@ -87,15 +94,37 @@ public class Main {
                 atuacao = EnumtipoAreaAtuacao.SCRUMMASTER;
             }
 
+            int idade = 0;
+            try {
+                idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe sua idade: "));
+            } catch (NumberFormatException e) {
+                chamaMenuPrincipal();
+            }
 
-            int idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe sua idade: "));
             String cidade = JOptionPane.showInputDialog(null, "Informe sua cidade: ");
+            if (cidade == null) {
+                chamaMenuPrincipal();
+            }
             String estado = JOptionPane.showInputDialog(null, "Informe seu estado: ");
+            if (estado == null) {
+                chamaMenuPrincipal();
+            }
             String email = JOptionPane.showInputDialog(null, "Informe seu e-mail: ");
+            if (email == null) {
+                chamaMenuPrincipal();
+            }
             String linkdin = JOptionPane.showInputDialog(null, "Informe seu linkedin: ");
+            if (linkdin == null) {
+                chamaMenuPrincipal();
+            }
             String especialidade = JOptionPane.showInputDialog(null, "Informe sua especialidade: ");
+            if (especialidade == null) {
+                chamaMenuPrincipal();
+            }
             String historicoDeMent = JOptionPane.showInputDialog(null, "Informe o histórico de mentoria: ");
-
+            if (historicoDeMent == null) {
+                chamaMenuPrincipal();
+            }
 
             PessoaTalento pessoaTalento1 = new PessoaTalento(atuacao, nome, sexo, idade, cidade, estado, email, linkdin, especialidade, historicoDeMent);
             PessoaTalentoDao.salvarPessoaTalento(pessoaTalento1);
@@ -112,8 +141,9 @@ public class Main {
             relatorio.append(("Histórico de mentorias ")).append(historicoDeMent).append("\n");
             relatorio.append(("Atuação ")).append(atuacao).append("\n");
 
-
             JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório Mentor", JOptionPane.INFORMATION_MESSAGE);
+
+            chamaMenuPrincipal();
 
         }
 
@@ -126,7 +156,7 @@ public class Main {
                 case 0: //Pessoas Talentos
                     chamaRelatoriosPessoasTalentos();
                     break;
-                case 1:
+                case 1: //Voltar 
                     chamaMenuPrincipal();
                     break;
                 default:
@@ -138,9 +168,10 @@ public class Main {
 
 
 
-public static void chamaRelatoriosPessoasTalentos(){
+private static void chamaRelatoriosPessoasTalentos(){
     List<PessoaTalento> pessoaTalentos = PessoaTalentoDao.buscarTodasPessoasTalento();
     RelatorioPessoaTalentoForm.emitirRelatorio(pessoaTalentos);
+
 }
 
 
