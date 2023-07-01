@@ -45,10 +45,12 @@ public class PessoaTalentoDao {
         String nome = JOptionPane.showInputDialog(null, "Informe novo nome." , pessoaTalentos.get(0).getNome());
         if (nome == null || nome.isEmpty()) {
             Cadastros.chamaMenuPrincipal();
+        } else {
+            pessoaTalentos.get(0).setNome(nome);
+            JOptionPane.showMessageDialog(null, "Mentor alterado com sucesso!");
+            Cadastros.chamaMenuPrincipal();
         }
-        pessoaTalento.setNome(nome);
-        JOptionPane.showMessageDialog(null, "Mentor alterado com sucesso!");
-        Cadastros.chamaMenuPrincipal();
+
     }
 
 
