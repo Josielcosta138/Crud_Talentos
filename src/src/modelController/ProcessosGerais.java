@@ -189,19 +189,26 @@ public class ProcessosGerais {
 
     private static void chamaMenuProcessos(){
 
-        String[] opcoesMenuRelatorios = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome"};
-        int menuRelatorios = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
-                "Menu processos Mentaria", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuRelatorios, opcoesMenuRelatorios[0]);
+        String[] opcoesMenuProcessos = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome"};
+        int menuProcessos = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
+                "Menu processos Mentaria", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuProcessos, opcoesMenuProcessos[0]);
         List<PessoaMentor> pessoaTalentos1 = PessoaMentorDao.buscarTodasPessoasMentor();
 
 
-        switch (menuRelatorios){
+        switch (menuProcessos){
             case 0: //Alterar
                 PessoaMentorDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
                 break;
-            case 1: //Voltar
+            case 1: //Remover
+
+
+
+                PessoaMentorDao.excluirPessoasMentor(pessoaTalentos1.get(0));
+                break;
+            case 2: //Voltar
                 chamaMenuPrincipal();
                 break;
+
             default:
                 JOptionPane.showMessageDialog(null, "Opção inválida. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
                 break;
