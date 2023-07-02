@@ -2,7 +2,7 @@ package model;
 
 public class Entity {
 
-    private int id;
+    private Integer id;
 
     public int getId() {
         return id;
