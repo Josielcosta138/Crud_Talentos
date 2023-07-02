@@ -1,7 +1,6 @@
 package model;
-import javax.swing.table.AbstractTableModel;
-import java.util.Vector;
-public  class PessoaTalento extends Entity {
+
+public  class PessoaMentor extends Entity {
 
     private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
     private String nome;
@@ -16,7 +15,7 @@ public  class PessoaTalento extends Entity {
     private EnumStartup enumStartup;
 
 
-    public PessoaTalento(EnumtipoAreaAtuacao enumtipoAreaAtuacao, String nome, EnumSexo enumSexo, int idade, String cidade, String estado, String email, String linkdin, String especialidade, String historioDeMentorias, EnumStartup enumStartup) {
+    public PessoaMentor(EnumtipoAreaAtuacao enumtipoAreaAtuacao, String nome, EnumSexo enumSexo, int idade, String cidade, String estado, String email, String linkdin, String especialidade, String historioDeMentorias, EnumStartup enumStartup) {
         this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
         this.nome = nome;
         this.enumSexo = enumSexo;
