@@ -1,7 +1,7 @@
 package tableForm;
 
 import model.*;
-import modelController.Cadastros;
+import modelController.ProcessosGerais;
 import relatorios.RelatorioPessoaMentor;
 
 import javax.swing.*;
@@ -10,7 +10,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.Vector;
-
 import static com.sun.javafx.fxml.expression.Expression.add;
 
 public class RelatorioMentorForm extends JPanel{
@@ -49,7 +48,7 @@ public class RelatorioMentorForm extends JPanel{
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent evt) {
                     frame.setVisible(false);
-                    Cadastros.chamaMenuPrincipal();
+                    ProcessosGerais.chamaMenuPrincipal();
                 }
 
             });
