@@ -145,12 +145,12 @@ public class PessoaMentorDao {
             pessoaMentors.get(0).setEnumStartup(startup1);
         }
 
-        EnumtipoAreaAtuacao pessoaTalentoAtuacao = EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA;
+        EnumtipoAreaAtuacao pessoaMentoriaAtuacao = EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA;
         Object[] selectionStatusAtuacao = {"ANALISTA DE SISTEMAS", "MARKETING", "DIREITO EMPRESARIAL", "GESTAO FINANCEIRA", "MENTOR EM INOVAÇÃO",
                 "EDUCAÇÃO PARA MIDIAS", "QA", "DESENVOLVEDOR BACK-END", "DESENVOLVEDOR FRONT-END", "ANALISTA DE NEGOCIO", "PO", "SCRUM MASTER"};
-        String initialSelectionStatusAtuacao = pessoaTalentoAtuacao.toString();
+        String initialSelectionStatusAtuacao = pessoaMentoriaAtuacao.toString();
         Object selectionStatus2 = JOptionPane.showInputDialog(null, "Selecione sua Área de Atuação.",
-                "Lista de Especialidades", JOptionPane.QUESTION_MESSAGE, null, selectionStatusAtuacao, initialSelectionStatusAtuacao);
+                "Lista de átuação", JOptionPane.QUESTION_MESSAGE, null, selectionStatusAtuacao, initialSelectionStatusAtuacao);
         if (selectionStatus2 == null) {
             ProcessosGerais.chamaMenuPrincipal();
         }
@@ -193,10 +193,11 @@ public class PessoaMentorDao {
             pessoaMentors.get(0).setEnumtipoAreaAtuacao(atuacao);
         }
         JOptionPane.showMessageDialog(null,"Dados alterados com sucesso!");
+        ProcessosGerais.chamaMenuPrincipal();
     }
 
 
-    public static void excluirPessoasMentor(PessoaMentor pessoaMentor) {
+    public static void excluirPessoasMentor(PessoaMentor pessoaMentor) throws SQLException, ClassNotFoundException {
 
         Object[] selectionValues = PessoaMentorDao.ListaDeNomesDeMentores();
         String initialSelection = (String) selectionValues[0];
