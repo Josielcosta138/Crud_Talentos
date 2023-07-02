@@ -1,21 +1,22 @@
 package modelController;
-
 import model.*;
 import repository.PessoaMentorDao;
 import tableForm.*;
 import javax.swing.*;
+import java.sql.SQLException;
 import java.util.List;
 
 public class ProcessosGerais {
 
-    public static void chamaMenuPrincipal(){
+    public static void chamaMenuPrincipal() throws SQLException, ClassNotFoundException {
         String[] opcoesMenu = {"Cadastro de Mentoria", "Processos", "Relatorios", "Sair"};
         int opcao = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Menu Principal",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
 
         switch (opcao){
             case 0: //Cadastro de mentoria
-                chamaCadastroMentoria();
+                PessoaMentor pessoaMentor = chamaCadastroMentoria();
+                 getPessoaMentorDao().salvarBanco(pessoaMentor);
                 break;
             case 1:  //Processos
                 chamaMenuProcessos();
@@ -37,7 +38,7 @@ public class ProcessosGerais {
                 //break;
         }}
 
-    private static void chamaCadastroMentoria () {
+    private static PessoaMentor chamaCadastroMentoria () throws SQLException, ClassNotFoundException {
 
         String nome = JOptionPane.showInputDialog(null, "Informe o seu nome: ");
         if (nome == null || nome.isEmpty() ) {
@@ -152,6 +153,8 @@ public class ProcessosGerais {
         PessoaMentor pessoaMentor1 = new PessoaMentor(atuacao, nome, sexo, idade, cidade, estado, email, linkdin, especialidade, historicoDeMent,startup1);
         PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
 
+
+
         StringBuilder relatorio = new StringBuilder();
         relatorio.append(("Nome ")).append(nome).append("\n");
         relatorio.append(("Idade ")).append(idade).append("\n");
@@ -166,10 +169,17 @@ public class ProcessosGerais {
         relatorio.append(("Atuação ")).append(startup1).append("\n");
 
         JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório Mentor", JOptionPane.INFORMATION_MESSAGE);
-        chamaMenuPrincipal();
+
+
+
+        //PessoaMentor pessoaMentor = chamaCadastroMentoria();
+        //PessoaMentorDao.salvarBanco(pessoaMentor);
+
+        //chamaMenuPrincipal();
+        return pessoaMentor1;
     }
 
-    private static void chamaRelatorios(){
+    private static void chamaRelatorios() throws SQLException, ClassNotFoundException {
         String[] opcoesMenuRelatorios = {"Talentos", "Voltar"};
         int menuRelatorios = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
                 "Menu Relatórios", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuRelatorios, opcoesMenuRelatorios[0]);
@@ -187,7 +197,7 @@ public class ProcessosGerais {
         }
     }
 
-    private static void chamaMenuProcessos(){
+    private static void chamaMenuProcessos() throws SQLException, ClassNotFoundException {
 
         String[] opcoesMenuRelatorios = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome"};
         int menuRelatorios = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
@@ -208,8 +218,13 @@ public class ProcessosGerais {
         }
     }
 
+    public static PessoaMentorDao getPessoaMentorDao() {
+        PessoaMentorDao pessoaMentorDao = new PessoaMentorDao();
+        return pessoaMentorDao;
+    }
 
-    private static void chamaRelatoriosPessoasTalentos() {
+
+    private static void chamaRelatoriosPessoasTalentos() throws SQLException, ClassNotFoundException {
         List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscarTodasPessoasMentor();
 
         if (pessoaMentors.isEmpty()) {

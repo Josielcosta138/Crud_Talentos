@@ -2,9 +2,9 @@ package model;
 
 public class Entity {
 
-    private int id;
+    private long id;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

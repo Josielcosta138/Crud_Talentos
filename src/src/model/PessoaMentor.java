@@ -1,9 +1,9 @@
 package model;
 
 public  class PessoaMentor extends Entity {
-
-    private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
     private String nome;
+    private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
+
     private EnumSexo enumSexo;
     private int idade;
     private String cidade;

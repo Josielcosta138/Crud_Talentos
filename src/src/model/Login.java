@@ -1,9 +1,11 @@
 package model;
 import modelController.ProcessosGerais;
 import javax.swing.*;
+import java.sql.SQLException;
+
 public class Login {
 
-    public static void exibirTelaLogin() {
+    public static void exibirTelaLogin() throws SQLException, ClassNotFoundException {
         JTextField usernameField = new JTextField();
         JPasswordField passwordField = new JPasswordField();
 

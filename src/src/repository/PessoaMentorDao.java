@@ -1,5 +1,6 @@
 package repository;
 
+import bancoDeDados.PessoaMentorRepository;
 import model.EnumSexo;
 import model.EnumStartup;
 import model.EnumtipoAreaAtuacao;
@@ -7,6 +8,7 @@ import model.PessoaMentor;
 import modelController.ProcessosGerais;
 
 import javax.swing.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,13 @@ public class PessoaMentorDao {
 
     public static void salvarPessoaMentor(PessoaMentor pessoaMentor) {
         pessoaMentorList.add(pessoaMentor);
+    }
+
+    public static void salvarBanco(PessoaMentor pessoaMentor) throws SQLException, ClassNotFoundException {
+        PessoaMentorRepository repository = new PessoaMentorRepository();
+        repository.insere(pessoaMentor);
+
+
     }
 
     public static List<PessoaMentor> buscarTodasPessoasMentor() {
@@ -35,7 +44,7 @@ public class PessoaMentorDao {
         return pessoaMentorFiltradas;
     }
 
-    public static void alterarPessoaMentoria(PessoaMentor pessoaMentor) {
+    public static void alterarPessoaMentoria(PessoaMentor pessoaMentor) throws SQLException, ClassNotFoundException {
 
 
         Object[] selectionValues = PessoaMentorDao.ListaDeNomesDeMentores();
