@@ -7,8 +7,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ProcessosGerais {
-
+    public static void exibirMensagemBoasVindas(){
+        JOptionPane.showOptionDialog(null, "Bem vindo a Plataforma de Mentoria!",
+                "Mensagem de Boas-vindas", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                new String[]{"Entrar"}, "Entrar");
+    }
     public static void chamaMenuPrincipal() throws SQLException, ClassNotFoundException {
+
         String[] opcoesMenu = {"Cadastro de Mentoria", "Processos", "Relatorios", "Sair"};
         int opcao = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Menu Principal",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
@@ -28,15 +33,12 @@ public class ProcessosGerais {
                 int opcaoSair = JOptionPane.showOptionDialog(null, "Deseja realmente sair ?",
                         "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                 if (opcaoSair == JOptionPane.YES_NO_OPTION){
-                    Login.exibirTelaLogin();
-                    break;
-                    //System.exit(0);
-                }else {
+                    System.exit(0);
+                } else {
                     chamaMenuPrincipal();
-                    break;
                 }
-                //break;
-        }}
+        }
+    }
 
     private static PessoaMentor chamaCadastroMentoria () throws SQLException, ClassNotFoundException {
 
@@ -199,19 +201,26 @@ public class ProcessosGerais {
 
     private static void chamaMenuProcessos() throws SQLException, ClassNotFoundException {
 
-        String[] opcoesMenuRelatorios = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome"};
-        int menuRelatorios = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
-                "Menu processos Mentaria", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuRelatorios, opcoesMenuRelatorios[0]);
+        String[] opcoesMenuProcessos = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome"};
+        int menuProcessos = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
+                "Menu processos Mentaria", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuProcessos, opcoesMenuProcessos[0]);
         List<PessoaMentor> pessoaTalentos1 = PessoaMentorDao.buscarTodasPessoasMentor();
 
 
-        switch (menuRelatorios){
+        switch (menuProcessos){
             case 0: //Alterar
                 PessoaMentorDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
                 break;
-            case 1: //Voltar
+            case 1: //Remover
+
+
+
+                PessoaMentorDao.excluirPessoasMentor(pessoaTalentos1.get(0));
+                break;
+            case 2: //Voltar
                 chamaMenuPrincipal();
                 break;
+
             default:
                 JOptionPane.showMessageDialog(null, "Opção inválida. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
                 break;

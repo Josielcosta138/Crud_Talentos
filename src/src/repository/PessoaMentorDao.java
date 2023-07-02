@@ -192,17 +192,27 @@ public class PessoaMentorDao {
             atuacao = EnumtipoAreaAtuacao.SCRUMMASTER;
             pessoaMentors.get(0).setEnumtipoAreaAtuacao(atuacao);
         }
-
+        JOptionPane.showMessageDialog(null,"Dados alterados com sucesso!");
     }
 
 
     public static void excluirPessoasMentor(PessoaMentor pessoaMentor) {
-        pessoaMentorList.remove(pessoaMentor);
-        JOptionPane.showMessageDialog(null, "Mentor removido com sucesso!");
+
+        Object[] selectionValues = PessoaMentorDao.ListaDeNomesDeMentores();
+        String initialSelection = (String) selectionValues[0];
+        Object selection = JOptionPane.showInputDialog(null, "Selecione o mentor para remover!",
+                "Processo - exclusão", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+
+        if (selection != null) {
+            String selectedMentor = (String) selection;
+            List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscarPorNome(selectedMentor);
+            for (PessoaMentor mentor : pessoaMentors) {
+                pessoaMentorList.remove(mentor);
+                ProcessosGerais.chamaMenuPrincipal();
+                break;
+            }
+        }
     }
-
-
-
 
     public static Object[] ListaDeNomesDeMentores() {   //Lista de Nomes
         List<PessoaMentor> pessoaMentors = buscarTodasPessoasMentor();
