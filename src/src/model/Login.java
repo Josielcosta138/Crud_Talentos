@@ -1,48 +1,38 @@
-//package model;
-//import modelController.ProcessosGerais;
-//import javax.swing.*;
-//public class Login {
-//
-//    public static void exibirTelaLogin() {
-//        JTextField usernameField = new JTextField();
-//        JPasswordField passwordField = new JPasswordField();
-//
-//        Object[] message = {
-//                "Login:", usernameField, //admin
-//                "Senha:", passwordField //123456
-//        };
-//
-//        int option = JOptionPane.showConfirmDialog(null, message,
-//                "Tela de Login", JOptionPane.OK_CANCEL_OPTION);
-//
-//        if (option == JOptionPane.OK_CANCEL_OPTION){
-//            exibirTelaLogin();
-//        }
-//
-//
-//        if (option == JOptionPane.OK_OPTION) {
-//            String username = usernameField.getText();
-//            String password = new String(passwordField.getPassword());
-//
-//            if (verificarCredenciais(username, password)) {
-//                ProcessosGerais.chamaMenuPrincipal();
-//            } else {
-//                JOptionPane.showMessageDialog(null,
-//                        "Credenciais inválidas. Tente novamente.", "Erro de login", JOptionPane.ERROR_MESSAGE);
-//                exibirTelaLogin();
-//            }
-//        } else {
-//            ProcessosGerais.chamaMenuPrincipal();
-//            //System.exit(0);
-//        }
-//    }
-//
-// /*   private static void chamaMenuPrincipal() {
-//    }*/
-//
-//
-//    public static boolean verificarCredenciais(String username, String password) {
-//        return username.equals("admin") && password.equals("123456");
-//    }
-//
-//}
+package model;
+import modelController.ProcessosGerais;
+import repository.UsuarioDao;
+
+import javax.swing.*;
+import java.sql.SQLException;
+
+import static modelController.ProcessosGerais.chamaMenuPrincipal;
+
+public class Login {
+
+ public static void exibirTelaLogin() throws SQLException, ClassNotFoundException {
+     Object usuarioLogado = chamaSelecaoUsuario();
+     checaSenhaUsuario(usuarioLogado);
+    }
+    private static void checaSenhaUsuario(Object usuarioLogado) throws SQLException, ClassNotFoundException {
+        String senhaDigitada = JOptionPane.showInputDialog(null,
+                "Informe a senha do usuário: ");
+        Usuario usuarioByLogin = UsuarioDao.findUsuarioByLogin((String) usuarioLogado);
+
+        if (usuarioByLogin.getSenha().equals(senhaDigitada)) {
+            chamaMenuPrincipal();
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta! Digite novamente: ");
+            checaSenhaUsuario(usuarioLogado);
+        }
+    }
+
+    private static Object chamaSelecaoUsuario() {
+        Object[] selectionValues = UsuarioDao.findUsuariosSistemaInArray();
+        String initialSelection = (String) selectionValues[0];
+        Object selection = JOptionPane.showInputDialog(null, "Selecione o usuário: ",
+                "Tela de Login", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+        return selection;
+    }
+
+
+}
