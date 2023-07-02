@@ -6,7 +6,7 @@ import tableForm.*;
 import javax.swing.*;
 import java.util.List;
 
-public class Cadastros {
+public class ProcessosGerais {
 
     public static void chamaMenuPrincipal(){
         String[] opcoesMenu = {"Cadastro de Mentoria", "Processos", "Relatorios", "Sair"};
@@ -186,8 +186,6 @@ public class Cadastros {
                 break;
         }
     }
-
-
 
     private static void chamaMenuProcessos(){
 

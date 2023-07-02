@@ -1,5 +1,5 @@
 package model;
-import modelController.Cadastros;
+import modelController.ProcessosGerais;
 import javax.swing.*;
 public class Login {
 
@@ -25,14 +25,14 @@ public class Login {
             String password = new String(passwordField.getPassword());
 
             if (verificarCredenciais(username, password)) {
-                Cadastros.chamaMenuPrincipal();
+                ProcessosGerais.chamaMenuPrincipal();
             } else {
                 JOptionPane.showMessageDialog(null,
                         "Credenciais inválidas. Tente novamente.", "Erro de login", JOptionPane.ERROR_MESSAGE);
                 exibirTelaLogin();
             }
         } else {
-            Cadastros.chamaMenuPrincipal();
+            ProcessosGerais.chamaMenuPrincipal();
             //System.exit(0);
         }
     }
