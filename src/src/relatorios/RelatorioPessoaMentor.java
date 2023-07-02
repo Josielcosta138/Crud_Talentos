@@ -3,7 +3,7 @@ import model.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.Vector;
 
-public class RelatorioPessoaTalento extends AbstractTableModel{
+public class RelatorioPessoaMentor extends AbstractTableModel{
     private static final long serialVersionUID = 1L;
     public static final int INDEX_ENUMTIPOAREAATUACAO = 0;
     public static final int INDEX_NOME = 1;
@@ -18,9 +18,9 @@ public class RelatorioPessoaTalento extends AbstractTableModel{
     public static final int INDEX_ESCONDIDO = 10;
 
     protected String[] nomeColunas;
-    protected Vector<PessoaTalento> vetorDados;
+    protected Vector<PessoaMentor> vetorDados;
 
-    public RelatorioPessoaTalento(String[] columnNames, Vector<PessoaTalento> vetorDados) {
+    public RelatorioPessoaMentor(String[] columnNames, Vector<PessoaMentor> vetorDados) {
         this.nomeColunas = columnNames;
         this.vetorDados = vetorDados;
     }
@@ -41,7 +41,7 @@ public class RelatorioPessoaTalento extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int linha, int coluna) {
-        PessoaTalento registroPessoa = (PessoaTalento) vetorDados.get(linha);
+        PessoaMentor registroPessoa = (PessoaMentor) vetorDados.get(linha);
         switch (coluna) {
             case INDEX_ENUMTIPOAREAATUACAO:
                 return registroPessoa.getEnumtipoAreaAtuacao();

@@ -1,12 +1,10 @@
 package modelController;
 
 import model.*;
-import repository.PessoaTalentoDao;
+import repository.PessoaMentorDao;
 import tableForm.*;
 import javax.swing.*;
 import java.util.List;
-
-
 
 public class Cadastros {
 
@@ -21,10 +19,8 @@ public class Cadastros {
                 break;
             case 1:  //Processos
                 chamaMenuProcessos();
-
                 break;
-            case 2:
-                //Relatorios
+            case 2: //Relatorios
                 chamaRelatorios();
                 break;
             case 3:
@@ -32,10 +28,13 @@ public class Cadastros {
                         "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                 if (opcaoSair == JOptionPane.YES_NO_OPTION){
                     Login.exibirTelaLogin();
+                    break;
                     //System.exit(0);
                 }else {
                     chamaMenuPrincipal();
+                    break;
                 }
+                //break;
         }}
 
     private static void chamaCadastroMentoria () {
@@ -150,8 +149,8 @@ public class Cadastros {
             atuacao = EnumtipoAreaAtuacao.SCRUMMASTER;
         }
 
-        PessoaTalento pessoaTalento1 = new PessoaTalento(atuacao, nome, sexo, idade, cidade, estado, email, linkdin, especialidade, historicoDeMent,startup1);
-        PessoaTalentoDao.salvarPessoaTalento(pessoaTalento1);
+        PessoaMentor pessoaMentor1 = new PessoaMentor(atuacao, nome, sexo, idade, cidade, estado, email, linkdin, especialidade, historicoDeMent,startup1);
+        PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
 
         StringBuilder relatorio = new StringBuilder();
         relatorio.append(("Nome ")).append(nome).append("\n");
@@ -167,9 +166,7 @@ public class Cadastros {
         relatorio.append(("Atuação ")).append(startup1).append("\n");
 
         JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório Mentor", JOptionPane.INFORMATION_MESSAGE);
-
         chamaMenuPrincipal();
-
     }
 
     private static void chamaRelatorios(){
@@ -197,13 +194,12 @@ public class Cadastros {
         String[] opcoesMenuRelatorios = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome"};
         int menuRelatorios = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
                 "Menu processos Mentaria", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuRelatorios, opcoesMenuRelatorios[0]);
-        List<PessoaTalento> pessoaTalentos1 = PessoaTalentoDao.buscarTodasPessoasTalento();
+        List<PessoaMentor> pessoaTalentos1 = PessoaMentorDao.buscarTodasPessoasMentor();
 
 
         switch (menuRelatorios){
             case 0: //Alterar
-
-                PessoaTalentoDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
+                PessoaMentorDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
                 break;
             case 1: //Voltar
                 chamaMenuPrincipal();
@@ -212,19 +208,17 @@ public class Cadastros {
                 JOptionPane.showMessageDialog(null, "Opção inválida. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
                 break;
         }
-
-        //PessoaTalentoDao.alterarPessoaMentoria();
     }
 
 
     private static void chamaRelatoriosPessoasTalentos() {
-        List<PessoaTalento> pessoaTalentos = PessoaTalentoDao.buscarTodasPessoasTalento();
+        List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscarTodasPessoasMentor();
 
-        if (pessoaTalentos.isEmpty()) {
+        if (pessoaMentors.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Lista Pessoa Talento esta Vazia!", "Erro", JOptionPane.INFORMATION_MESSAGE);
             chamaMenuPrincipal();
         } else {
-            RelatorioPessoaTalentoForm.emitirRelatorio(pessoaTalentos);
+            RelatorioMentorForm.emitirRelatorio(pessoaMentors);
         }
     }
 }

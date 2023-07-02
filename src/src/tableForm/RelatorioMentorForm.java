@@ -2,7 +2,7 @@ package tableForm;
 
 import model.*;
 import modelController.Cadastros;
-import relatorios.RelatorioPessoaTalento;
+import relatorios.RelatorioPessoaMentor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,20 +13,20 @@ import java.util.Vector;
 
 import static com.sun.javafx.fxml.expression.Expression.add;
 
-public class RelatorioPessoaTalentoForm extends JPanel{
+public class RelatorioMentorForm extends JPanel{
     private static final long serialVersionUID = 1L;
     public static final String[] nomeColunas =
             {"Área de Atuação", "Nome","Sexo","Idade","Cidade", "Estado","E-mail", "Linkedin", "Especialidade", "Historico de Mentorias"};
     protected JTable table;
     protected JScrollPane scroller;
-    protected RelatorioPessoaTalento tabela;
+    protected RelatorioPessoaMentor tabela;
 
-    public RelatorioPessoaTalentoForm(Vector<PessoaTalento> vetorDados) {
+    public RelatorioMentorForm(Vector<PessoaMentor> vetorDados) {
         iniciarComponentes(vetorDados);
     }
 
-    public void iniciarComponentes(Vector<PessoaTalento> vetorDados) {
-        tabela = new RelatorioPessoaTalento(nomeColunas, vetorDados);
+    public void iniciarComponentes(Vector<PessoaMentor> vetorDados) {
+        tabela = new RelatorioPessoaMentor(nomeColunas, vetorDados);
         table = new JTable();
         table.setModel(tabela);
         table.setSurrendersFocusOnKeystroke(true);
@@ -41,7 +41,7 @@ public class RelatorioPessoaTalentoForm extends JPanel{
         add(scroller, BorderLayout.CENTER);
     }
 
-    public static void emitirRelatorio(List<PessoaTalento> pessoaTalentos) {
+    public static void emitirRelatorio(List<PessoaMentor> pessoaMentors) {
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             JFrame frame = new JFrame("Relatorio");
@@ -53,12 +53,12 @@ public class RelatorioPessoaTalentoForm extends JPanel{
                 }
 
             });
-            Vector<PessoaTalento> vetorDados = new Vector<PessoaTalento>();
-            for (PessoaTalento pessoaTalento : pessoaTalentos) {
-                vetorDados.add(pessoaTalento);
+            Vector<PessoaMentor> vetorDados = new Vector<PessoaMentor>();
+            for (PessoaMentor pessoaMentor : pessoaMentors) {
+                vetorDados.add(pessoaMentor);
             }
 
-            frame.getContentPane().add(new RelatorioPessoaTalentoForm(vetorDados));
+            frame.getContentPane().add(new RelatorioMentorForm(vetorDados));
             frame.pack();
             frame.setVisible(true);
             frame.setLocationRelativeTo(null);
