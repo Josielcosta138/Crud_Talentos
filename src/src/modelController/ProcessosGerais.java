@@ -1,10 +1,12 @@
 package modelController;
 import model.*;
 import repository.PessoaMentorDao;
+import sun.applet.Main;
 import tableForm.*;
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.List;
+
 
 public class ProcessosGerais {
     public static void exibirMensagemBoasVindas(){
@@ -34,7 +36,8 @@ public class ProcessosGerais {
                 int opcaoSair = JOptionPane.showOptionDialog(null, "Deseja realmente sair ?",
                         "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                 if (opcaoSair == JOptionPane.YES_NO_OPTION){
-                    System.exit(0);
+                    //System.exit(0);
+                    Login.exibirTelaLogin();
                 } else {
                     chamaMenuPrincipal();
                 }
