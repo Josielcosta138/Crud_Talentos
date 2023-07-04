@@ -1,26 +1,26 @@
 package model;
 
+import java.util.List;
+
 public  class PessoaMentor extends Entity {
     private String nome;
+    private int idade;
     private EnumSexo enumSexo;
+    private String cidade;
     private EnumEstado enumEstado;
     private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
-
-    private EnumContato enumContato;
-    private int idade;
-    private String cidade;
     private String historioDeMentorias;
+    private List<EnumContato> contatos;
 
-
-    public PessoaMentor(String nome, EnumSexo enumSexo, EnumEstado enumEstado, EnumtipoAreaAtuacao enumtipoAreaAtuacao, EnumContato enumContato, int idade, String cidade, String historioDeMentorias) {
+    public PessoaMentor(String nome, int idade, EnumSexo enumSexo, String cidade, EnumEstado enumEstado, EnumtipoAreaAtuacao enumtipoAreaAtuacao, String historioDeMentorias, List<EnumContato> contatos) {
         this.nome = nome;
+        this.idade = idade;
         this.enumSexo = enumSexo;
+        this.cidade = cidade;
         this.enumEstado = enumEstado;
         this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
-        this.enumContato = enumContato;
-        this.idade = idade;
-        this.cidade = cidade;
         this.historioDeMentorias = historioDeMentorias;
+        this.contatos = contatos;
     }
 
     public String getNome() {
@@ -79,25 +79,25 @@ public  class PessoaMentor extends Entity {
         this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
     }
 
-    public EnumContato getEnumContato() {
-        return enumContato;
+    public List<EnumContato> getContatos() {
+        return contatos;
     }
 
-    public void setEnumContato(EnumContato enumContato) {
-        this.enumContato = enumContato;
+    public void setContatos(List<EnumContato> contatos) {
+        this.contatos = contatos;
     }
 
     @Override
     public String toString() {
         return "PessoaMentor{" +
                 "nome='" + nome + '\'' +
+                ", idade=" + idade +
                 ", enumSexo=" + enumSexo +
+                ", cidade='" + cidade + '\'' +
                 ", enumEstado=" + enumEstado +
                 ", enumtipoAreaAtuacao=" + enumtipoAreaAtuacao +
-                ", enumContato=" + enumContato +
-                ", idade=" + idade +
-                ", cidade='" + cidade + '\'' +
                 ", historioDeMentorias='" + historioDeMentorias + '\'' +
+                ", contatos=" + contatos +
                 '}';
     }
 }

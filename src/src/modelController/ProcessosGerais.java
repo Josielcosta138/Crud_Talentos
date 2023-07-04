@@ -5,6 +5,7 @@ import sun.applet.Main;
 import tableForm.*;
 import javax.swing.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -131,26 +132,66 @@ public class ProcessosGerais {
         }
 
         //AQUI TERA QUE PERGUNTAR SE DESEJA CADASTRAR MAIS DE UM CONTATO
-        EnumContato enumContato = EnumContato.TELEFONE;
-        Object[] selectionStatusContato = {"TELEFONE", "WHATSAPP", "FACEBOOK" , "INSTAGRAM" , "LINKEDIN" , "TWITTER"};
-        String initialSelectionStatusContato = enumEstado.toString();
-        Object selectionStatusCont = JOptionPane.showInputDialog(null, "Selecione o Contato:",
-                "Lista de Contatos", JOptionPane.QUESTION_MESSAGE, null, selectionStatusContato, initialSelectionStatusContato);
-        if (selectionStatusCont == null) {
-            chamaMenuPrincipal();
+//        EnumContato enumContato = EnumContato.TELEFONE;
+//        Object[] selectionStatusContato = {"TELEFONE", "WHATSAPP", "FACEBOOK" , "INSTAGRAM" , "LINKEDIN" , "TWITTER"};
+//        String initialSelectionStatusContato = enumEstado.toString();
+//        Object selectionStatusCont = JOptionPane.showInputDialog(null, "Selecione o Contato:",
+//                "Lista de Contatos", JOptionPane.QUESTION_MESSAGE, null, selectionStatusContato, initialSelectionStatusContato);
+//        if (selectionStatusCont == null) {
+//            chamaMenuPrincipal();
+//        }
+//        EnumContato enumContato1 = EnumContato.TELEFONE;
+//        if (selectionStatusCont.equals("WHATSAPP")) {
+//            enumContato1 = EnumContato.WHATSAPP;
+//        } else if (selectionStatusCont.equals("FACEBOOK")) {
+//            enumContato1 = EnumContato.FACEBOOK;
+//        } else if (selectionStatusCont.equals("INSTAGRAM")) {
+//            enumContato1 = EnumContato.INSTAGRAM;
+//        } else if (selectionStatusCont.equals("LINKEDIN")) {
+//            enumContato1 = EnumContato.LINKEDIN;
+//        } else if (selectionStatusCont.equals("TWITTER")) {
+//            enumContato1 = EnumContato.TWITTER;
+//        }
+        List<EnumContato> contatos = new ArrayList<>();
+
+        boolean cadastrarMaisContatos = true;
+        while (cadastrarMaisContatos) {
+            EnumContato enumContato = EnumContato.TELEFONE;
+            Object[] selectionStatusContato = {"TELEFONE", "WHATSAPP", "FACEBOOK", "INSTAGRAM", "LINKEDIN", "TWITTER"};
+            String initialSelectionStatusContato = enumContato.toString();
+            Object selectionStatusCont = JOptionPane.showInputDialog(null, "Selecione o Contato:",
+                    "Lista de Contatos", JOptionPane.QUESTION_MESSAGE, null, selectionStatusContato, initialSelectionStatusContato);
+            if (selectionStatusCont == null) {
+                chamaMenuPrincipal();
+            }
+            EnumContato enumContato1 = EnumContato.TELEFONE;
+            if (selectionStatusCont.equals("WHATSAPP")) {
+                enumContato1 = EnumContato.WHATSAPP;
+            } else if (selectionStatusCont.equals("FACEBOOK")) {
+                enumContato1 = EnumContato.FACEBOOK;
+            } else if (selectionStatusCont.equals("INSTAGRAM")) {
+                enumContato1 = EnumContato.INSTAGRAM;
+            } else if (selectionStatusCont.equals("LINKEDIN")) {
+                enumContato1 = EnumContato.LINKEDIN;
+            } else if (selectionStatusCont.equals("TWITTER")) {
+                enumContato1 = EnumContato.TWITTER;
+            }
+
+            String descricao = JOptionPane.showInputDialog("Digite a descrição do contato:");
+            if (descricao == null || descricao.isEmpty()) {
+                chamaMenuPrincipal();
+            }
+
+            Contato contato = new Contato(descricao, enumContato1);
+            contatos.add(contato.getEnumContato());
+
+            int option = JOptionPane.showConfirmDialog(null, "Deseja cadastrar mais contatos?", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.NO_OPTION) {
+                cadastrarMaisContatos = false;
+            }
         }
-        EnumContato enumContato1 = EnumContato.TELEFONE;
-        if (selectionStatusCont.equals("WHATSAPP")) {
-            enumContato1 = EnumContato.WHATSAPP;
-        } else if (selectionStatusCont.equals("FACEBOOK")) {
-            enumContato1 = EnumContato.FACEBOOK;
-        } else if (selectionStatusCont.equals("INSTAGRAM")) {
-            enumContato1 = EnumContato.INSTAGRAM;
-        } else if (selectionStatusCont.equals("LINKEDIN")) {
-            enumContato1 = EnumContato.LINKEDIN;
-        } else if (selectionStatusCont.equals("TWITTER")) {
-            enumContato1 = EnumContato.TWITTER;
-        }
+
+
 
 
         String historicoDeMent = JOptionPane.showInputDialog(null, "Informe o histórico de mentoria: ");
@@ -158,20 +199,22 @@ public class ProcessosGerais {
                 chamaMenuPrincipal();
         }
 
-            PessoaMentor pessoaMentor1 = new PessoaMentor(nome, sexo, estado, atuacao, enumContato1, idade, cidade, historicoDeMent);
-            PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
+        PessoaMentor pessoaMentor1 = new PessoaMentor(nome, idade, sexo, cidade, enumEstado, enumtipoAreaAtuacao, historicoDeMent,  contatos);
+        PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
 
-            StringBuilder relatorio = new StringBuilder();
-            relatorio.append(("Nome ")).append(nome).append("\n");
-            relatorio.append(("Idade ")).append(idade).append("\n");
-            relatorio.append(("Sexo ")).append(sexo).append("\n");
-            relatorio.append(("Cidade ")).append(cidade).append("\n");
-            relatorio.append(("Estado ")).append(estado).append("\n");
-            relatorio.append(("Estado ")).append(atuacao).append("\n");
-            relatorio.append(("Estado ")).append(enumContato1).append("\n");
-            relatorio.append(("Histórico de mentorias ")).append(historicoDeMent).append("\n");
+        StringBuilder relatorio = new StringBuilder();
+        relatorio.append(("Nome ")).append(nome).append("\n");
+        relatorio.append(("Idade ")).append(idade).append("\n");
+        relatorio.append(("Sexo ")).append(sexo).append("\n");
+        relatorio.append(("Cidade ")).append(cidade).append("\n");
+        relatorio.append(("Estado ")).append(estado).append("\n");
+        relatorio.append(("Atuação ")).append(atuacao).append("\n");
+        relatorio.append(("Histórico de mentorias ")).append(historicoDeMent).append("\n");
+        relatorio.append(("Contato ")).append(contatos).append("\n");
 
-            JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório Mentor", JOptionPane.INFORMATION_MESSAGE);
+
+
+        JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório Mentor", JOptionPane.INFORMATION_MESSAGE);
             return pessoaMentor1;
         }
 

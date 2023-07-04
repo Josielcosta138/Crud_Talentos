@@ -3,17 +3,17 @@ import model.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.Vector;
 
-public class RelatorioPessoaMentor extends AbstractTableModel{
+public class RelatorioPessoaMentor extends javax.swing.table.AbstractTableModel{
     private static final long serialVersionUID = 1L;
-    public static final int INDEX_NOME = 1;
-    public static final int INDEX_ENUMSEXO = 2;
-    public static final int INDEX_IDADE = 3;
-    public static final int INDEX_CIDADE = 4;
-    public static final int INDEX_ESTADO = 5;
-    public static final int INDEX_HISTORICODEMENTORIAS = 6;
-    public static final int INDEX_AREAATUACAO = 7;
-    public static final int INDEX_CONTATO = 8;
-    public static final int INDEX_ESCONDIDO = 9;
+    public static final int INDEX_NOME = 0;
+    public static final int INDEX_ENUMSEXO = 1;
+    public static final int INDEX_IDADE = 2;
+    public static final int INDEX_CIDADE = 3;
+    public static final int INDEX_ESTADO = 4;
+    public static final int INDEX_HISTORICODEMENTORIAS = 5;
+    public static final int INDEX_AREAATUACAO = 6;
+    public static final int INDEX_CONTATO = 7;
+    public static final int INDEX_ESCONDIDO = 8;
 
     protected String[] nomeColunas;
     protected Vector<PessoaMentor> vetorDados;
@@ -56,7 +56,7 @@ public class RelatorioPessoaMentor extends AbstractTableModel{
             case INDEX_AREAATUACAO:
                 return registroPessoa.getEnumtipoAreaAtuacao();
             case INDEX_CONTATO:
-                return registroPessoa.getEnumContato();
+                return registroPessoa.getContatos();
 
             default:
                 return new Object();
