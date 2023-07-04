@@ -16,7 +16,7 @@ import static com.sun.javafx.fxml.expression.Expression.add;
 public class RelatorioMentorForm extends JPanel{
     private static final long serialVersionUID = 1L;
     public static final String[] nomeColunas =
-            {"Área de Atuação", "Nome","Sexo","Idade","Cidade", "Estado","E-mail", "Linkedin", "Especialidade", "Historico de Mentorias"};
+            {"Nome","Sexo","Idade","Cidade","Estado","Historico de Mentorias","Area de atuação" ,"Contato"};
     protected JTable table;
     protected JScrollPane scroller;
     protected RelatorioPessoaMentor tabela;
@@ -32,11 +32,6 @@ public class RelatorioMentorForm extends JPanel{
         table.setSurrendersFocusOnKeystroke(true);
         scroller = new javax.swing.JScrollPane(table);
         table.setPreferredScrollableViewportSize(new java.awt.Dimension(500, 300));
-
-//        TableColumn colunaEscondida = table.getColumnModel().getColumn(RelatorioHospede.INDEX_ESCONDIDO);
-//        colunaEscondida.setMinWidth(2);
-//        colunaEscondida.setPreferredWidth(2);
-//        colunaEscondida.setMaxWidth(2);
         setLayout(new BorderLayout());
         add(scroller, BorderLayout.CENTER);
     }

@@ -2,39 +2,25 @@ package model;
 
 public  class PessoaMentor extends Entity {
     private String nome;
+    private EnumSexo enumSexo;
+    private EnumEstado enumEstado;
     private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
 
-    private EnumSexo enumSexo;
+    private EnumContato enumContato;
     private int idade;
     private String cidade;
-    private String estado;
-    private String email;
-    private String linkdin;
-    private String especialidade;
     private String historioDeMentorias;
-    private EnumStartup enumStartup;
 
 
-    public PessoaMentor(EnumtipoAreaAtuacao enumtipoAreaAtuacao, String nome, EnumSexo enumSexo, int idade, String cidade, String estado, String email, String linkdin, String especialidade, String historioDeMentorias, EnumStartup enumStartup) {
-        this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
+    public PessoaMentor(String nome, EnumSexo enumSexo, EnumEstado enumEstado, EnumtipoAreaAtuacao enumtipoAreaAtuacao, EnumContato enumContato, int idade, String cidade, String historioDeMentorias) {
         this.nome = nome;
         this.enumSexo = enumSexo;
+        this.enumEstado = enumEstado;
+        this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
+        this.enumContato = enumContato;
         this.idade = idade;
         this.cidade = cidade;
-        this.estado = estado;
-        this.email = email;
-        this.linkdin = linkdin;
-        this.especialidade = especialidade;
         this.historioDeMentorias = historioDeMentorias;
-        this.enumStartup = enumStartup;
-    }
-
-    public EnumtipoAreaAtuacao getEnumtipoAreaAtuacao() {
-        return enumtipoAreaAtuacao;
-    }
-
-    public void setEnumtipoAreaAtuacao(EnumtipoAreaAtuacao enumtipoAreaAtuacao) {
-        this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
     }
 
     public String getNome() {
@@ -69,38 +55,6 @@ public  class PessoaMentor extends Entity {
         this.cidade = cidade;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getLinkdin() {
-        return linkdin;
-    }
-
-    public void setLinkdin(String linkdin) {
-        this.linkdin = linkdin;
-    }
-
-    public String getEspecialidade() {
-        return especialidade;
-    }
-
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
-    }
-
     public String getHistorioDeMentorias() {
         return historioDeMentorias;
     }
@@ -109,28 +63,41 @@ public  class PessoaMentor extends Entity {
         this.historioDeMentorias = historioDeMentorias;
     }
 
-    public EnumStartup getEnumStartup() {
-        return enumStartup;
+    public EnumEstado getEnumEstado() {
+        return enumEstado;
     }
 
-    public void setEnumStartup(EnumStartup enumStartup) {
-        this.enumStartup = enumStartup;
+    public void setEnumEstado(EnumEstado enumEstado) {
+        this.enumEstado = enumEstado;
+    }
+
+    public EnumtipoAreaAtuacao getEnumtipoAreaAtuacao() {
+        return enumtipoAreaAtuacao;
+    }
+
+    public void setEnumtipoAreaAtuacao(EnumtipoAreaAtuacao enumtipoAreaAtuacao) {
+        this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
+    }
+
+    public EnumContato getEnumContato() {
+        return enumContato;
+    }
+
+    public void setEnumContato(EnumContato enumContato) {
+        this.enumContato = enumContato;
     }
 
     @Override
     public String toString() {
-        return "PessoaTalento{" +
-                "enumtipoAreaAtuacao=" + enumtipoAreaAtuacao +
-                ", nome='" + nome + '\'' +
+        return "PessoaMentor{" +
+                "nome='" + nome + '\'' +
                 ", enumSexo=" + enumSexo +
+                ", enumEstado=" + enumEstado +
+                ", enumtipoAreaAtuacao=" + enumtipoAreaAtuacao +
+                ", enumContato=" + enumContato +
                 ", idade=" + idade +
                 ", cidade='" + cidade + '\'' +
-                ", estado='" + estado + '\'' +
-                ", email='" + email + '\'' +
-                ", linkdin='" + linkdin + '\'' +
-                ", especialidade='" + especialidade + '\'' +
                 ", historioDeMentorias='" + historioDeMentorias + '\'' +
-                ", enumStartup=" + enumStartup +
                 '}';
     }
 }
