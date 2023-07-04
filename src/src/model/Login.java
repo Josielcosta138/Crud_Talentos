@@ -1,51 +1,47 @@
 package model;
+
 import modelController.ProcessosGerais;
 import repository.UsuarioDao;
 
 import javax.swing.*;
 import java.sql.SQLException;
+import model.EnumtipoAreaAtuacao;
 
 import static modelController.ProcessosGerais.chamaMenuPrincipal;
 
 public class Login {
 
     public static void exibirTelaLogin() throws SQLException, ClassNotFoundException {
-        Object usuarioLogado = chamaSelecaoUsuario();
-        checaSenhaUsuario(usuarioLogado);
-    }
+        String[] nomesMentores = {"Mentor 1"};
 
-    private static Object chamaSelecaoUsuario() {
-        Object[] selectionValues = {"Mentor", "Startup"};
-        String initialSelection = (String) selectionValues[0];
-        Object selection = JOptionPane.showInputDialog(null, "Selecione o usuário:",
-                "Tela de Login", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+        JComboBox<String> nomesMentoresComboBox = new JComboBox<>(nomesMentores);
+        JPasswordField passwordField = new JPasswordField();
 
-        if (selection == null) {
-            int opcaoSair = JOptionPane.showOptionDialog(null, "Você está cancelando o login. Deseja realmente sair?",
-                    "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-            if (opcaoSair == JOptionPane.YES_OPTION)
-                System.exit(0);
-            return chamaSelecaoUsuario();
-        }
+        Object[] loginMessage = {
+                "Nome do Mentor:", nomesMentoresComboBox,
+                "Senha:", passwordField
+        };
 
-        return selection;
-    }
+        int loginOption = JOptionPane.showConfirmDialog(null, loginMessage,
+                "Tela de Login - Mentor", JOptionPane.OK_CANCEL_OPTION);
 
-    private static void checaSenhaUsuario(Object usuarioLogado) throws SQLException, ClassNotFoundException {
-        String senhaCorreta = "123";
+        if (loginOption == JOptionPane.OK_OPTION) {
+            String nomeMentor = (String) nomesMentoresComboBox.getSelectedItem();
+            String password = new String(passwordField.getPassword());
 
-        String senhaDigitada = JOptionPane.showInputDialog(null, "Informe a senha do usuário:");
-
-        if (senhaDigitada == null) {
-            Object usuarioSelecionado = chamaSelecaoUsuario();
-            checaSenhaUsuario(usuarioSelecionado);
-            return;
-        }
-
-        if (senhaDigitada.equals(senhaCorreta)) {
-            chamaMenuPrincipal();
+            if (verificarCredenciais(nomeMentor, password)) {
+                ProcessosGerais.chamaMenuPrincipal();
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Credenciais inválidas. Tente novamente.", "Erro de login", JOptionPane.ERROR_MESSAGE);
+                exibirTelaLogin();
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Senha incorreta! Digite novamente.");
-            checaSenhaUsuario(usuarioLogado);
+            System.exit(0);
         }
-    }}
+    }
+    public static boolean verificarCredenciais(String nomeMentor, String password) {
+
+        return password.equals("123");
+    }
+}
