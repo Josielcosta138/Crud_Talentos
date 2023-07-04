@@ -9,22 +9,21 @@ import java.util.List;
 
 
 public class ProcessosGerais {
-    public static void exibirMensagemBoasVindas(){
+    public static void exibirMensagemBoasVindas() {
         JOptionPane.showOptionDialog(null, "Bem vindo a Plataforma de Mentoria!",
                 "Mensagem de Boas-vindas", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
                 new String[]{"Entrar"}, "Entrar");
     }
+
     public static void chamaMenuPrincipal() throws SQLException, ClassNotFoundException {
 
         String[] opcoesMenu = {"Cadastro de Mentoria", "Processos", "Relatorios", "Sair"};
         int opcao = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Menu Principal",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
 
-        switch (opcao){
+        switch (opcao) {
             case 0: //Cadastro de mentoria
                 chamaCadastroMentoria();
-                //PessoaMentor pessoaMentor = chamaCadastroMentoria();
-                //getPessoaMentorDao().salvarBanco(pessoaMentor);
                 break;
             case 1:  //Processos
                 chamaMenuProcessos();
@@ -35,7 +34,7 @@ public class ProcessosGerais {
             case 3:
                 int opcaoSair = JOptionPane.showOptionDialog(null, "Deseja realmente sair ?",
                         "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-                if (opcaoSair == JOptionPane.YES_NO_OPTION){
+                if (opcaoSair == JOptionPane.YES_NO_OPTION) {
                     //System.exit(0);
                     Login.exibirTelaLogin();
                 } else {
@@ -44,41 +43,16 @@ public class ProcessosGerais {
         }
     }
 
-    private static PessoaMentor chamaCadastroMentoria () throws SQLException, ClassNotFoundException {
+    private static PessoaMentor chamaCadastroMentoria() throws SQLException, ClassNotFoundException {
 
         String nome = JOptionPane.showInputDialog(null, "Informe o seu nome: ");
-        if (nome == null || nome.isEmpty() ) {
+        if (nome == null || nome.isEmpty()) {
             chamaMenuPrincipal();
         }
         int idade = 0;
         try {
             idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe sua idade: "));
         } catch (NumberFormatException e) {
-            chamaMenuPrincipal();
-        }
-
-        String cidade = JOptionPane.showInputDialog(null, "Informe sua cidade: ");
-        if (cidade == null || cidade.isEmpty() ) {
-            chamaMenuPrincipal();
-        }
-        String estado = JOptionPane.showInputDialog(null, "Informe seu estado: ");
-        if (estado == null || estado.isEmpty()) {
-            chamaMenuPrincipal();
-        }
-        String email = JOptionPane.showInputDialog(null, "Informe seu e-mail: ");
-        if (email == null || email.isEmpty() ) {
-            chamaMenuPrincipal();
-        }
-        String linkdin = JOptionPane.showInputDialog(null, "Informe seu linkedin: ");
-        if (linkdin == null || linkdin.isEmpty() ) {
-            chamaMenuPrincipal();
-        }
-        String especialidade = JOptionPane.showInputDialog(null, "Informe sua especialidade: ");
-        if (especialidade == null || especialidade.isEmpty() ) {
-            chamaMenuPrincipal();
-        }
-        String historicoDeMent = JOptionPane.showInputDialog(null, "Informe o histórico de mentoria: ");
-        if (historicoDeMent == null || historicoDeMent.isEmpty() ) {
             chamaMenuPrincipal();
         }
 
@@ -98,150 +72,169 @@ public class ProcessosGerais {
             sexo = EnumSexo.OUTROS;
         }
 
-        EnumStartup startup = EnumStartup.INNOVATETECH;
-        Object[] selectionStatusStartup = {"INNOVATETECH", "TECHLAB", "DIGITALLABS", "CONNECTX", "NEXUSTECH"};
-        String initialSelectionStatusStartup = pessoaTalento.toString();
-        Object selectionStatusStartup2 = JOptionPane.showInputDialog(null, "Selecione seu sexo:",
-                "Lista de Sexo", JOptionPane.QUESTION_MESSAGE, null, selectionStatusStartup, initialSelectionStatusStartup);
-        if (selectionStatusStartup2 == null) {
+        EnumEstado enumEstado = EnumEstado.SC;
+        Object[] selectionStatusEstado = {"SC", "PR", "RS"};
+        String initialSelectionStatusEstado = enumEstado.toString();
+        Object selectionStatusEst = JOptionPane.showInputDialog(null, "Selecione o Estado conforme sua cidade:",
+                "Lista de Estado", JOptionPane.QUESTION_MESSAGE, null, selectionStatusEstado, initialSelectionStatusEstado);
+        if (selectionStatusEst == null) {
             chamaMenuPrincipal();
         }
-        EnumStartup startup1 = EnumStartup.INNOVATETECH;
-        if (selectionStatusStartup2.equals("TECHLAB")) {
-            startup1 = EnumStartup.TECHLAB;
-        } if (selectionStatusStartup2.equals("DIGITALLABS")) {
-            startup1 = EnumStartup.DIGITALLABS;
-        } if (selectionStatusStartup2.equals("CONNECTX")) {
-            startup1 = EnumStartup.CONNECTX;
-        } if (selectionStatusStartup2.equals("DIGITALLABS")) {
-            startup1 = EnumStartup.DIGITALLABS;
-        }if (selectionStatusStartup2.equals("DIGITALLABS")) {
-            startup1 = EnumStartup.NEXUSTECH;
+        EnumEstado estado = EnumEstado.SC;
+        if (selectionStatusEst.equals("PR")) {
+            estado = EnumEstado.PR;
+        } else if (selectionStatusEst.equals("RS")) {
+            estado = EnumEstado.RS;
         }
 
 
-        EnumtipoAreaAtuacao pessoaTalentoAtuacao = EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA;
-        Object[] selectionStatusAtuacao = {"ANALISTA DE SISTEMAS", "MARKETING", "DIREITO EMPRESARIAL", "GESTAO FINANCEIRA", "MENTOR EM INOVAÇÃO",
-                "EDUCAÇÃO PARA MIDIAS", "QA", "DESENVOLVEDOR BACK-END", "DESENVOLVEDOR FRONT-END", "ANALISTA DE NEGOCIO", "PO", "SCRUM MASTER"};
-        String initialSelectionStatusAtuacao = pessoaTalentoAtuacao.toString();
-        Object selectionStatus2 = JOptionPane.showInputDialog(null, "Selecione sua Área de Atuação.",
-                "Lista de Especialidades", JOptionPane.QUESTION_MESSAGE, null, selectionStatusAtuacao, initialSelectionStatusAtuacao);
-        if (selectionStatus2 == null) {
+        String cidade = JOptionPane.showInputDialog(null, "Informe sua cidade: ");
+        if (cidade == null || cidade.isEmpty()) {
             chamaMenuPrincipal();
         }
-        EnumtipoAreaAtuacao atuacao = EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA;
-        if (selectionStatus2.equals("MARKETING")) {
-            atuacao = EnumtipoAreaAtuacao.MARKTING;
-        } else if (selectionStatus2.equals("DIREITO EMPRESARIAL")) {
+
+
+        EnumtipoAreaAtuacao enumtipoAreaAtuacao = EnumtipoAreaAtuacao.MARKTING;
+        Object[] selectionStatusAreaDeAtuacao = {"MARKTING", "ANALISTA_DE_SISTEMA", "DIREITO_EMPRESARIAL","GESTAO_FINANCEIRA","MENTOR_EM_INOVACAO",
+                "EDUCAO_PARA_MIDIAS","QA","DESENVOLVEDOR_BACKEND","DESENVOLVEDOR_FRONTEND","ANALISTA_DE_NEGOCIO","PO","SCRUMMASTER","OUTROS"};
+        String initialSelectionStatusAreaDeAtuacao = pessoaTalento.toString();
+        Object selectionStatusAre = JOptionPane.showInputDialog(null, "Selecione seu area:",
+                "Lista Area de Atuação.", JOptionPane.QUESTION_MESSAGE, null, selectionStatusAreaDeAtuacao, initialSelectionStatusAreaDeAtuacao);
+        if (selectionStatusAre == null) {
+            chamaMenuPrincipal();
+        }
+        EnumtipoAreaAtuacao atuacao = EnumtipoAreaAtuacao.MARKTING;
+        if (selectionStatusAre.equals("ANALISTA_DE_SISTEMA")) {
+            atuacao = EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA;
+        } else if (selectionStatusAre.equals("DIREITO_EMPRESARIAL")) {
             atuacao = EnumtipoAreaAtuacao.DIREITO_EMPRESARIAL;
-        } else if (selectionStatus2.equals("DIREITO EMPRESARIAL")) {
-            atuacao = EnumtipoAreaAtuacao.DIREITO_EMPRESARIAL;
-        } else if (selectionStatus2.equals("GESTAO FINANCEIRA")) {
+        }else if (selectionStatusAre.equals("GESTAO_FINANCEIRA")) {
             atuacao = EnumtipoAreaAtuacao.GESTAO_FINANCEIRA;
-        } else if (selectionStatus2.equals("MENTOR EM INOVACAO")) {
+        }else if (selectionStatusAre.equals("MENTOR_EM_INOVACAO")) {
             atuacao = EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO;
-        } else if (selectionStatus2.equals("EDUCAOÇÃO PARA MIDIAS")) {
+        }else if (selectionStatusAre.equals("EDUCAO_PARA_MIDIAS")) {
             atuacao = EnumtipoAreaAtuacao.EDUCAO_PARA_MIDIAS;
-        } else if (selectionStatus2.equals("QA")) {
+        }else if (selectionStatusAre.equals("QA")) {
             atuacao = EnumtipoAreaAtuacao.QA;
-        } else if (selectionStatus2.equals("DESENVOLVEDO BACK-END")) {
+        }else if (selectionStatusAre.equals("DESENVOLVEDOR_BACKEND")) {
             atuacao = EnumtipoAreaAtuacao.DESENVOLVEDOR_BACKEND;
-        } else if (selectionStatus2.equals("DESENVOLVEDOR FRONT-END")) {
+        }else if (selectionStatusAre.equals("DESENVOLVEDOR_FRONTEND")) {
             atuacao = EnumtipoAreaAtuacao.DESENVOLVEDOR_FRONTEND;
-        } else if (selectionStatus2.equals("ANALISTA DE NEGOCIO")) {
+        }else if (selectionStatusAre.equals("ANALISTA_DE_NEGOCIO")) {
             atuacao = EnumtipoAreaAtuacao.ANALISTA_DE_NEGOCIO;
-        } else if (selectionStatus2.equals("PO")) {
+        }else if (selectionStatusAre.equals("PO")) {
             atuacao = EnumtipoAreaAtuacao.PO;
-        } else if (selectionStatus2.equals("SCRUMMASTER")) {
+        }else if (selectionStatusAre.equals("SCRUMMASTER")) {
             atuacao = EnumtipoAreaAtuacao.SCRUMMASTER;
+        }else if (selectionStatusAre.equals("OUTROS")) {
+            atuacao = EnumtipoAreaAtuacao.OUTROS;
         }
 
-        PessoaMentor pessoaMentor1 = new PessoaMentor(atuacao, nome, sexo, idade, cidade, estado, email, linkdin, especialidade, historicoDeMent,startup1);
-        PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
-
-
-
-        StringBuilder relatorio = new StringBuilder();
-        relatorio.append(("Nome ")).append(nome).append("\n");
-        relatorio.append(("Idade ")).append(idade).append("\n");
-        relatorio.append(("Sexo ")).append(sexo).append("\n");
-        relatorio.append(("E-mail")).append(email).append("\n");
-        relatorio.append(("Linkedin ")).append(linkdin).append("\n");
-        relatorio.append(("Cidade ")).append(cidade).append("\n");
-        relatorio.append(("Estado ")).append(estado).append("\n");
-        relatorio.append(("Especialidade ")).append(especialidade).append("\n");
-        relatorio.append(("Histórico de mentorias ")).append(historicoDeMent).append("\n");
-        relatorio.append(("Atuação ")).append(atuacao).append("\n");
-        relatorio.append(("Atuação ")).append(startup1).append("\n");
-
-        JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório Mentor", JOptionPane.INFORMATION_MESSAGE);
-
-
-
-        //PessoaMentor pessoaMentor = chamaCadastroMentoria();
-        //PessoaMentorDao.salvarBanco(pessoaMentor);
-
-        //chamaMenuPrincipal();
-        return pessoaMentor1;
-    }
-
-    private static void chamaRelatorios() throws SQLException, ClassNotFoundException {
-        String[] opcoesMenuRelatorios = {"Talentos", "Voltar"};
-        int menuRelatorios = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
-                "Menu Relatórios", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuRelatorios, opcoesMenuRelatorios[0]);
-
-        switch (menuRelatorios){
-            case 0: //Pessoas Talentos
-                chamaRelatoriosPessoasTalentos();
-                break;
-            case 1: //Voltar
-                chamaMenuPrincipal();
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Opção inválida. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
-                break;
-        }
-    }
-
-    private static void chamaMenuProcessos() throws SQLException, ClassNotFoundException {
-
-        String[] opcoesMenuProcessos = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome"};
-        int menuProcessos = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
-                "Menu processos Mentaria", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuProcessos, opcoesMenuProcessos[0]);
-        List<PessoaMentor> pessoaTalentos1 = PessoaMentorDao.buscarTodasPessoasMentor();
-
-
-        switch (menuProcessos){
-            case 0: //Alterar
-                PessoaMentorDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
-                break;
-            case 1: //Remover
-                PessoaMentorDao.excluirPessoasMentor(pessoaTalentos1.get(0));
-                break;
-            case 2: //Voltar
-                chamaMenuPrincipal();
-                break;
-
-            default:
-                JOptionPane.showMessageDialog(null, "Opção inválida. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
-                break;
-        }
-    }
-
-    public static PessoaMentorDao getPessoaMentorDao() {
-        PessoaMentorDao pessoaMentorDao = new PessoaMentorDao();
-        return pessoaMentorDao;
-    }
-
-
-    private static void chamaRelatoriosPessoasTalentos() throws SQLException, ClassNotFoundException {
-        List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscarTodasPessoasMentor();
-
-        if (pessoaMentors.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Lista Pessoa Talento esta Vazia!", "Erro", JOptionPane.INFORMATION_MESSAGE);
+        //AQUI TERA QUE PERGUNTAR SE DESEJA CADASTRAR MAIS DE UM CONTATO
+        EnumContato enumContato = EnumContato.TELEFONE;
+        Object[] selectionStatusContato = {"TELEFONE", "WHATSAPP", "FACEBOOK" , "INSTAGRAM" , "LINKEDIN" , "TWITTER"};
+        String initialSelectionStatusContato = enumEstado.toString();
+        Object selectionStatusCont = JOptionPane.showInputDialog(null, "Selecione o Contato:",
+                "Lista de Contatos", JOptionPane.QUESTION_MESSAGE, null, selectionStatusContato, initialSelectionStatusContato);
+        if (selectionStatusCont == null) {
             chamaMenuPrincipal();
-        } else {
-            RelatorioMentorForm.emitirRelatorio(pessoaMentors);
+        }
+        EnumContato enumContato1 = EnumContato.TELEFONE;
+        if (selectionStatusCont.equals("WHATSAPP")) {
+            enumContato1 = EnumContato.WHATSAPP;
+        } else if (selectionStatusCont.equals("FACEBOOK")) {
+            enumContato1 = EnumContato.FACEBOOK;
+        } else if (selectionStatusCont.equals("INSTAGRAM")) {
+            enumContato1 = EnumContato.INSTAGRAM;
+        } else if (selectionStatusCont.equals("LINKEDIN")) {
+            enumContato1 = EnumContato.LINKEDIN;
+        } else if (selectionStatusCont.equals("TWITTER")) {
+            enumContato1 = EnumContato.TWITTER;
+        }
+
+
+        String historicoDeMent = JOptionPane.showInputDialog(null, "Informe o histórico de mentoria: ");
+        if (historicoDeMent == null || historicoDeMent.isEmpty()) {
+                chamaMenuPrincipal();
+        }
+
+            PessoaMentor pessoaMentor1 = new PessoaMentor(nome, sexo, estado, atuacao, enumContato1, idade, cidade, historicoDeMent);
+            PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
+
+            StringBuilder relatorio = new StringBuilder();
+            relatorio.append(("Nome ")).append(nome).append("\n");
+            relatorio.append(("Idade ")).append(idade).append("\n");
+            relatorio.append(("Sexo ")).append(sexo).append("\n");
+            relatorio.append(("Cidade ")).append(cidade).append("\n");
+            relatorio.append(("Estado ")).append(estado).append("\n");
+            relatorio.append(("Estado ")).append(atuacao).append("\n");
+            relatorio.append(("Estado ")).append(enumContato1).append("\n");
+            relatorio.append(("Histórico de mentorias ")).append(historicoDeMent).append("\n");
+
+            JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório Mentor", JOptionPane.INFORMATION_MESSAGE);
+            return pessoaMentor1;
+        }
+
+
+        private static void chamaRelatorios () throws SQLException, ClassNotFoundException {
+            String[] opcoesMenuRelatorios = {"Talentos", "Voltar"};
+            int menuRelatorios = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
+                    "Menu Relatórios", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuRelatorios, opcoesMenuRelatorios[0]);
+
+            switch (menuRelatorios) {
+                case 0: //Pessoas Talentos
+                    chamaRelatoriosPessoasTalentos();
+                    break;
+                case 1: //Voltar
+                    chamaMenuPrincipal();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opção inválida. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    break;
+            }
+        }
+
+        private static void chamaMenuProcessos () throws SQLException, ClassNotFoundException {
+
+            String[] opcoesMenuProcessos = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome"};
+            int menuProcessos = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
+                    "Menu processos Mentaria", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuProcessos, opcoesMenuProcessos[0]);
+            List<PessoaMentor> pessoaTalentos1 = PessoaMentorDao.buscarTodasPessoasMentor();
+
+
+            switch (menuProcessos) {
+                case 0: //Alterar
+                    PessoaMentorDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
+                    break;
+                case 1: //Remover
+                    PessoaMentorDao.excluirPessoasMentor(pessoaTalentos1.get(0));
+                    break;
+                case 2: //Voltar
+                    chamaMenuPrincipal();
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Opção inválida. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    break;
+            }
+        }
+
+        public static PessoaMentorDao getPessoaMentorDao () {
+            PessoaMentorDao pessoaMentorDao = new PessoaMentorDao();
+            return pessoaMentorDao;
+        }
+
+
+        private static void chamaRelatoriosPessoasTalentos () throws SQLException, ClassNotFoundException {
+            List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscarTodasPessoasMentor();
+
+            if (pessoaMentors.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Lista Pessoa Talento esta Vazia!", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                chamaMenuPrincipal();
+            } else {
+                RelatorioMentorForm.emitirRelatorio(pessoaMentors);
+            }
         }
     }
-}
+
+
