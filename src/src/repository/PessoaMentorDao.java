@@ -1,14 +1,13 @@
 package repository;
 
 import bancoDeDados.PessoaMentorRepository;
-import model.EnumSexo;
-import model.EnumtipoAreaAtuacao;
-import model.PessoaMentor;
+import model.*;
 import modelController.ProcessosGerais;
 
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -16,6 +15,17 @@ import java.util.List;
 public class PessoaMentorDao {
 
     static List<PessoaMentor> pessoaMentorList = new ArrayList<>();
+
+    public static List<PessoaMentor> buscaTodosPessoaMentor() {
+        if (pessoaMentorList.isEmpty()) {
+            pessoaMentorList.add(new PessoaMentor("Marcelo Mazon", 22, EnumSexo.MASCULINO, "Criciuma", EnumEstado.SC, EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "H2H Hub 2017", Collections.singletonList(EnumContato.TWITTER)));
+            pessoaMentorList.add(new PessoaMentor("Lucas Bonfante", 22, EnumSexo.MASCULINO, "Florianópolis", EnumEstado.SC, EnumtipoAreaAtuacao.SCRUMMASTER, "Startup Weekend Palmas 2015", Collections.singletonList(EnumContato.WHATSAPP)));
+            pessoaMentorList.add(new PessoaMentor("Bruno Casemiro", 22, EnumSexo.MASCULINO, "Balneário Camboriú", EnumEstado.SC, EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA, "Hackathon IFTO Palmas 2018", Collections.singletonList(EnumContato.LINKEDIN)));
+            pessoaMentorList.add(new PessoaMentor("Doutora Deolane", 22, EnumSexo.FEMININO, "Içara", EnumEstado.SC, EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "    ECOA PUC Rio Rio de Janeiro 2022", Collections.singletonList(EnumContato.INSTAGRAM)));
+            pessoaMentorList.add(new PessoaMentor("Christine Vieira", 22, EnumSexo.FEMININO, "Joinville", EnumEstado.SC, EnumtipoAreaAtuacao.DESENVOLVEDOR_BACKEND, "Hackathon Govtech Araguaína 2021", Collections.singletonList(EnumContato.TELEFONE)));
+        }
+        return pessoaMentorList;
+    }
 
     public static void salvarPessoaMentor(PessoaMentor pessoaMentor) {
         pessoaMentorList.add(pessoaMentor);
