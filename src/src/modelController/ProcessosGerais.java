@@ -198,7 +198,7 @@ public class ProcessosGerais {
             chamaMenuPrincipal();
         }
 
-        PessoaMentor pessoaMentor1 = new PessoaMentor(nome, idade, sexo, formacao, cidade, enumtipoAreaAtuacao, historicoDeMent, contatos, descricaoContato);
+        PessoaMentor pessoaMentor1 = new PessoaMentor(nome, idade, sexo, formacao, cidade, enumtipoAreaAtuacao, historicoDeMent,  contatos, descricaoContato);
         PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
 
         StringBuilder relatorio = new StringBuilder();

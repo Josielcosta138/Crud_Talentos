@@ -1,6 +1,5 @@
 package relatorios;
 import model.*;
-import modelController.ProcessosGerais;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;

@@ -27,7 +27,7 @@ public class Login {
             String password = new String(passwordField.getPassword());
 
             if (verificarCredenciais(nomeMentor, password)) {
-                ProcessosGerais.chamaMenuPrincipal();
+                Login.verificarCredenciais(nomeMentor, password);
             } else {
                 JOptionPane.showMessageDialog(null,
                         "Credenciais inválidas. Tente novamente.", "Erro de login", JOptionPane.ERROR_MESSAGE);
