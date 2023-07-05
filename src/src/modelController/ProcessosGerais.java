@@ -77,8 +77,7 @@ public class ProcessosGerais {
         }
 
 
-
-        Object[] selectionStatusCidades = {"CIDADE_CRICIUMA", "CIDADE_GUARULHOS", "CIDADE_PORTO_ALEGRE"};
+        Object[] selectionStatusCidades = {"CRICIUMA", "GUARULHOS", "PORTO ALEGRE"};
         String initialSelectionStatusCidades = pessoaTalento.toString();
         Object selectionStatusCid = JOptionPane.showInputDialog(null, "Selecione a Cidade:",
                 "Lista de Cidades", JOptionPane.QUESTION_MESSAGE, null, selectionStatusCidades, initialSelectionStatusCidades);
@@ -86,17 +85,16 @@ public class ProcessosGerais {
             chamaMenuPrincipal();
         }
         EnumCidades cidade = EnumCidades.CIDADE_CRICIUMA;
-        if (selectionStatusCid.equals("CIDADE_GUARULHOS")) {
+        if (selectionStatusCid.equals("GUARULHOS")) {
             cidade = EnumCidades.CIDADE_GUARULHOS;
         } else if (selectionStatusCid.equals("")) {
             cidade = EnumCidades.CIDADE_PORTO_ALEGRE;
         }
 
 
-
         EnumtipoAreaAtuacao enumtipoAreaAtuacao = EnumtipoAreaAtuacao.MARKTING;
-        Object[] selectionStatusAreaDeAtuacao = {"MARKTING", "ANALISTA_DE_SISTEMA", "DIREITO_EMPRESARIAL", "GESTAO_FINANCEIRA", "MENTOR_EM_INOVACAO",
-                "EDUCAO_PARA_MIDIAS", "QA", "DESENVOLVEDOR_BACKEND", "DESENVOLVEDOR_FRONTEND", "ANALISTA_DE_NEGOCIO", "PO", "SCRUMMASTER", "OUTROS"};
+        Object[] selectionStatusAreaDeAtuacao = {"MARKETING", "ANALISTA DE SISTEMA", "DIREITO_EMPRESARIAL", "GESTAO FINANCEIRA", "MENTOR EM INOVACAO",
+                "EDUCAO PARA MIDIAS", "QA", "DESENVOLVEDOR BACKEND", "DESENVOLVEDOR FRONTEND", "ANALISTA DE NEGOCIO", "PO", "SCRUMMASTER", "OUTROS"};
         String initialSelectionStatusAreaDeAtuacao = pessoaTalento.toString();
         Object selectionStatusAre = JOptionPane.showInputDialog(null, "Selecione seu area:",
                 "Lista Area de Atuação.", JOptionPane.QUESTION_MESSAGE, null, selectionStatusAreaDeAtuacao, initialSelectionStatusAreaDeAtuacao);
@@ -104,23 +102,23 @@ public class ProcessosGerais {
             chamaMenuPrincipal();
         }
         EnumtipoAreaAtuacao atuacao = EnumtipoAreaAtuacao.MARKTING;
-        if (selectionStatusAre.equals("ANALISTA_DE_SISTEMA")) {
+        if (selectionStatusAre.equals("ANALISTA DE SISTEMA")) {
             atuacao = EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA;
-        } else if (selectionStatusAre.equals("DIREITO_EMPRESARIAL")) {
+        } else if (selectionStatusAre.equals("DIREITO EMPRESARIAL")) {
             atuacao = EnumtipoAreaAtuacao.DIREITO_EMPRESARIAL;
-        } else if (selectionStatusAre.equals("GESTAO_FINANCEIRA")) {
+        } else if (selectionStatusAre.equals("GESTAO FINANCEIRA")) {
             atuacao = EnumtipoAreaAtuacao.GESTAO_FINANCEIRA;
-        } else if (selectionStatusAre.equals("MENTOR_EM_INOVACAO")) {
+        } else if (selectionStatusAre.equals("MENTOR EM INOVACAO")) {
             atuacao = EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO;
-        } else if (selectionStatusAre.equals("EDUCAO_PARA_MIDIAS")) {
+        } else if (selectionStatusAre.equals("EDUCAO PARA MIDIAS")) {
             atuacao = EnumtipoAreaAtuacao.EDUCAO_PARA_MIDIAS;
         } else if (selectionStatusAre.equals("QA")) {
             atuacao = EnumtipoAreaAtuacao.QA;
-        } else if (selectionStatusAre.equals("DESENVOLVEDOR_BACKEND")) {
+        } else if (selectionStatusAre.equals("DESENVOLVEDOR BACKEND")) {
             atuacao = EnumtipoAreaAtuacao.DESENVOLVEDOR_BACKEND;
-        } else if (selectionStatusAre.equals("DESENVOLVEDOR_FRONTEND")) {
+        } else if (selectionStatusAre.equals("DESENVOLVEDOR FRONTEND")) {
             atuacao = EnumtipoAreaAtuacao.DESENVOLVEDOR_FRONTEND;
-        } else if (selectionStatusAre.equals("ANALISTA_DE_NEGOCIO")) {
+        } else if (selectionStatusAre.equals("ANALISTA DE NEGOCIO")) {
             atuacao = EnumtipoAreaAtuacao.ANALISTA_DE_NEGOCIO;
         } else if (selectionStatusAre.equals("PO")) {
             atuacao = EnumtipoAreaAtuacao.PO;
@@ -131,8 +129,8 @@ public class ProcessosGerais {
         }
 
 
-       EnumFormacao enumFormacao = EnumFormacao.ENSINO_FUNDAMENTAL;
-        Object[] selectionStatusFormacao = {"ENSINO_MEDIO", "ENSINO_TECNICO", "GRADUACAO","POS_GRADUACAO","MESTRADO","DOUTORADO"};
+        EnumFormacao enumFormacao = EnumFormacao.ENSINO_FUNDAMENTAL;
+        Object[] selectionStatusFormacao = {"ENSINO MEDIO", "ENSINO TECNICO", "GRADUACAO", "POS GRADUACAO", "MESTRADO", "DOUTORADO"};
         String initialSelectionStatusFormacao = pessoaTalento.toString();
         Object selectionStatusForm = JOptionPane.showInputDialog(null, "Selecione sua Formação",
                 "Lista de formação", JOptionPane.QUESTION_MESSAGE, null, selectionStatusFormacao, initialSelectionStatusFormacao);
@@ -140,17 +138,17 @@ public class ProcessosGerais {
             chamaMenuPrincipal();
         }
         EnumFormacao formacao = EnumFormacao.ENSINO_FUNDAMENTAL;
-        if (selectionStatusForm.equals("ENSINO_MEDIO")) {
+        if (selectionStatusForm.equals("ENSINO MEDIO")) {
             formacao = EnumFormacao.ENSINO_MEDIO;
-        } else if (selectionStatusForm.equals("ENSINO_TECNICO")) {
+        } else if (selectionStatusForm.equals("ENSINO TECNICO")) {
             formacao = EnumFormacao.ENSINO_TECNICO;
         } else if (selectionStatusForm.equals("GRADUACAO")) {
             formacao = EnumFormacao.GRADUACAO;
-        }else if (selectionStatusForm.equals("POS_GRADUACAO")) {
+        } else if (selectionStatusForm.equals("POS GRADUACAO")) {
             formacao = EnumFormacao.POS_GRADUACAO;
-        }else if (selectionStatusForm.equals("MESTRADO")) {
+        } else if (selectionStatusForm.equals("MESTRADO")) {
             formacao = EnumFormacao.MESTRADO;
-        }else if (selectionStatusForm.equals("DOUTORADO")) {
+        } else if (selectionStatusForm.equals("DOUTORADO")) {
             formacao = EnumFormacao.DOUTORADO;
         }
 
@@ -158,6 +156,7 @@ public class ProcessosGerais {
         List<EnumContato> contatos = new ArrayList<>();
 
         boolean cadastrarMaisContatos = true;
+        String descricaoContato = null;
         while (cadastrarMaisContatos) {
             EnumContato enumContato = EnumContato.TELEFONE;
             Object[] selectionStatusContato = {"TELEFONE", "WHATSAPP", "FACEBOOK", "INSTAGRAM", "LINKEDIN", "TWITTER"};
@@ -180,12 +179,12 @@ public class ProcessosGerais {
                 enumContato1 = EnumContato.TWITTER;
             }
 
-            String descricao = JOptionPane.showInputDialog("Digite a descrição do contato:");
-            if (descricao == null || descricao.isEmpty()) {
+            descricaoContato = JOptionPane.showInputDialog("Digite a descrição do contato:");
+            if (descricaoContato == null || descricaoContato.isEmpty()) {
                 chamaMenuPrincipal();
             }
 
-            Contato contato = new Contato(descricao, enumContato1);
+            Contato contato = new Contato(descricaoContato, enumContato1);
             contatos.add(contato.getEnumContato());
 
             int option = JOptionPane.showConfirmDialog(null, "Deseja cadastrar mais contatos?", "Confirmação", JOptionPane.YES_NO_OPTION);
@@ -199,7 +198,7 @@ public class ProcessosGerais {
             chamaMenuPrincipal();
         }
 
-        PessoaMentor pessoaMentor1 = new PessoaMentor(nome, idade, sexo, formacao, cidade, enumtipoAreaAtuacao, historicoDeMent, contatos);
+        PessoaMentor pessoaMentor1 = new PessoaMentor(nome, idade, sexo, formacao, cidade, enumtipoAreaAtuacao, historicoDeMent, contatos, descricaoContato);
         PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
 
         StringBuilder relatorio = new StringBuilder();
@@ -211,6 +210,7 @@ public class ProcessosGerais {
         relatorio.append(("Atuação ")).append(atuacao).append("\n");
         relatorio.append(("Histórico de mentorias ")).append(historicoDeMent).append("\n");
         relatorio.append(("Contato ")).append(contatos).append("\n");
+        relatorio.append(("Descrição Contato ")).append(descricaoContato).append("\n");
 
         JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório Mentor", JOptionPane.INFORMATION_MESSAGE);
         return chamaMenuPrincipal();
@@ -238,7 +238,7 @@ public class ProcessosGerais {
 
         private static void chamaMenuProcessos () throws SQLException, ClassNotFoundException {
 
-            String[] opcoesMenuProcessos = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome"};
+            String[] opcoesMenuProcessos = {"Alterar", "Excluir", "Buscar todos", "Buscar por nome", "Voltar"};
             int menuProcessos = JOptionPane.showOptionDialog(null, "Escolha uma opção: ",
                     "Menu processos Mentaria", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuProcessos, opcoesMenuProcessos[0]);
             List<PessoaMentor> pessoaTalentos1 = PessoaMentorDao.buscarTodasPessoasMentor();
@@ -251,7 +251,13 @@ public class ProcessosGerais {
                 case 1: //Remover
                     PessoaMentorDao.excluirPessoasMentor(pessoaTalentos1.get(0));
                     break;
-                case 2: //Voltar
+                case 2: //
+
+                    break;
+                case 3: //
+
+                    break;
+                case 4: //Voltar
                     chamaMenuPrincipal();
                     break;
 

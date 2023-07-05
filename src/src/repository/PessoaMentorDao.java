@@ -18,11 +18,11 @@ public class PessoaMentorDao {
 
     public static List<PessoaMentor> buscaTodosPessoaMentor() {
         if (pessoaMentorList.isEmpty()) {
-            pessoaMentorList.add(new PessoaMentor("Marcelo Mazon", 22, EnumSexo.MASCULINO, EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA, EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "H2H Hub 2017", Collections.singletonList(EnumContato.TWITTER)));
-            pessoaMentorList.add(new PessoaMentor("Lucas Bonfante", 22, EnumSexo.MASCULINO,EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA,  EnumtipoAreaAtuacao.SCRUMMASTER, "Startup Weekend Palmas 2015", Collections.singletonList(EnumContato.WHATSAPP)));
-            pessoaMentorList.add(new PessoaMentor("Bruno Casemiro", 22, EnumSexo.MASCULINO,EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA,  EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA, "Hackathon IFTO Palmas 2018", Collections.singletonList(EnumContato.LINKEDIN)));
-            pessoaMentorList.add(new PessoaMentor("Doutora Deolane", 22, EnumSexo.FEMININO,EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA,  EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "    ECOA PUC Rio Rio de Janeiro 2022", Collections.singletonList(EnumContato.INSTAGRAM)));
-            pessoaMentorList.add(new PessoaMentor("Christine Vieira", 22, EnumSexo.FEMININO,EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA, EnumtipoAreaAtuacao.DESENVOLVEDOR_BACKEND, "Hackathon Govtech Araguaína 2021", Collections.singletonList(EnumContato.TELEFONE)));
+            pessoaMentorList.add(new PessoaMentor("Marcelo Mazon", 37, EnumSexo.MASCULINO, EnumFormacao.MESTRADO, EnumCidades.CIDADE_CRICIUMA, EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "H2H Hub 2017", Collections.singletonList(EnumContato.TWITTER), "@marcelomazon"));
+            pessoaMentorList.add(new PessoaMentor("Lucas Bonfante", 30, EnumSexo.MASCULINO,EnumFormacao.POS_GRADUACAO, EnumCidades.CIDADE_PORTO_ALEGRE,  EnumtipoAreaAtuacao.SCRUMMASTER, "Startup Weekend Palmas 2015", Collections.singletonList(EnumContato.WHATSAPP), "4899999888888"));
+            pessoaMentorList.add(new PessoaMentor("Bruno Casemiro", 40, EnumSexo.MASCULINO,EnumFormacao.MESTRADO, EnumCidades.CIDADE_PORTO_ALEGRE,  EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA, "Hackathon IFTO Palmas 2018", Collections.singletonList(EnumContato.LINKEDIN),"@brunocasemiro"));
+            pessoaMentorList.add(new PessoaMentor("Doutora Deolane", 71, EnumSexo.FEMININO,EnumFormacao.DOUTORADO, EnumCidades.CIDADE_GUARULHOS,  EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "    ECOA PUC Rio Rio de Janeiro 2022", Collections.singletonList(EnumContato.INSTAGRAM),"doutoradeolane"));
+            pessoaMentorList.add(new PessoaMentor("Christine Vieira", 40, EnumSexo.FEMININO,EnumFormacao.MESTRADO, EnumCidades.CIDADE_CRICIUMA, EnumtipoAreaAtuacao.DESENVOLVEDOR_BACKEND, "Hackathon Govtech Araguaína 2021", Collections.singletonList(EnumContato.TELEFONE),"489988898989"));
         }
         return pessoaMentorList;
     }
