@@ -6,18 +6,19 @@ public  class PessoaMentor extends Entity {
     private String nome;
     private int idade;
     private EnumSexo enumSexo;
-    private String cidade;
-    private EnumEstado enumEstado;
+    private EnumFormacao enumFormacao;
+
+    private EnumCidades enumCidades;
     private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
     private String historioDeMentorias;
     private List<EnumContato> contatos;
 
-    public PessoaMentor(String nome, int idade, EnumSexo enumSexo, String cidade, EnumEstado enumEstado, EnumtipoAreaAtuacao enumtipoAreaAtuacao, String historioDeMentorias, List<EnumContato> contatos) {
+    public PessoaMentor(String nome, int idade, EnumSexo enumSexo, EnumFormacao enumFormacao, EnumCidades enumCidades, EnumtipoAreaAtuacao enumtipoAreaAtuacao, String historioDeMentorias, List<EnumContato> contatos) {
         this.nome = nome;
         this.idade = idade;
         this.enumSexo = enumSexo;
-        this.cidade = cidade;
-        this.enumEstado = enumEstado;
+        this.enumFormacao = enumFormacao;
+        this.enumCidades = enumCidades;
         this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
         this.historioDeMentorias = historioDeMentorias;
         this.contatos = contatos;
@@ -47,13 +48,6 @@ public  class PessoaMentor extends Entity {
         this.idade = idade;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
 
     public String getHistorioDeMentorias() {
         return historioDeMentorias;
@@ -63,20 +57,28 @@ public  class PessoaMentor extends Entity {
         this.historioDeMentorias = historioDeMentorias;
     }
 
-    public EnumEstado getEnumEstado() {
-        return enumEstado;
-    }
-
-    public void setEnumEstado(EnumEstado enumEstado) {
-        this.enumEstado = enumEstado;
-    }
-
     public EnumtipoAreaAtuacao getEnumtipoAreaAtuacao() {
         return enumtipoAreaAtuacao;
     }
 
     public void setEnumtipoAreaAtuacao(EnumtipoAreaAtuacao enumtipoAreaAtuacao) {
         this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
+    }
+
+    public EnumFormacao getEnumFormacao() {
+        return enumFormacao;
+    }
+
+    public void setEnumFormacao(EnumFormacao enumFormacao) {
+        this.enumFormacao = enumFormacao;
+    }
+
+    public EnumCidades getEnumCidades() {
+        return enumCidades;
+    }
+
+    public void setEnumCidades(EnumCidades enumCidades) {
+        this.enumCidades = enumCidades;
     }
 
     public List<EnumContato> getContatos() {
@@ -93,8 +95,8 @@ public  class PessoaMentor extends Entity {
                 "nome='" + nome + '\'' +
                 ", idade=" + idade +
                 ", enumSexo=" + enumSexo +
-                ", cidade='" + cidade + '\'' +
-                ", enumEstado=" + enumEstado +
+                ", enumFormacao=" + enumFormacao +
+                ", enumCidades=" + enumCidades +
                 ", enumtipoAreaAtuacao=" + enumtipoAreaAtuacao +
                 ", historioDeMentorias='" + historioDeMentorias + '\'' +
                 ", contatos=" + contatos +

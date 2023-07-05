@@ -18,11 +18,11 @@ public class PessoaMentorDao {
 
     public static List<PessoaMentor> buscaTodosPessoaMentor() {
         if (pessoaMentorList.isEmpty()) {
-            pessoaMentorList.add(new PessoaMentor("Marcelo Mazon", 22, EnumSexo.MASCULINO, "Criciuma", EnumEstado.SC, EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "H2H Hub 2017", Collections.singletonList(EnumContato.TWITTER)));
-            pessoaMentorList.add(new PessoaMentor("Lucas Bonfante", 22, EnumSexo.MASCULINO, "Florianópolis", EnumEstado.SC, EnumtipoAreaAtuacao.SCRUMMASTER, "Startup Weekend Palmas 2015", Collections.singletonList(EnumContato.WHATSAPP)));
-            pessoaMentorList.add(new PessoaMentor("Bruno Casemiro", 22, EnumSexo.MASCULINO, "Balneário Camboriú", EnumEstado.SC, EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA, "Hackathon IFTO Palmas 2018", Collections.singletonList(EnumContato.LINKEDIN)));
-            pessoaMentorList.add(new PessoaMentor("Doutora Deolane", 22, EnumSexo.FEMININO, "Içara", EnumEstado.SC, EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "    ECOA PUC Rio Rio de Janeiro 2022", Collections.singletonList(EnumContato.INSTAGRAM)));
-            pessoaMentorList.add(new PessoaMentor("Christine Vieira", 22, EnumSexo.FEMININO, "Joinville", EnumEstado.SC, EnumtipoAreaAtuacao.DESENVOLVEDOR_BACKEND, "Hackathon Govtech Araguaína 2021", Collections.singletonList(EnumContato.TELEFONE)));
+            pessoaMentorList.add(new PessoaMentor("Marcelo Mazon", 22, EnumSexo.MASCULINO, EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA, EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "H2H Hub 2017", Collections.singletonList(EnumContato.TWITTER)));
+            pessoaMentorList.add(new PessoaMentor("Lucas Bonfante", 22, EnumSexo.MASCULINO,EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA,  EnumtipoAreaAtuacao.SCRUMMASTER, "Startup Weekend Palmas 2015", Collections.singletonList(EnumContato.WHATSAPP)));
+            pessoaMentorList.add(new PessoaMentor("Bruno Casemiro", 22, EnumSexo.MASCULINO,EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA,  EnumtipoAreaAtuacao.ANALISTA_DE_SISTEMA, "Hackathon IFTO Palmas 2018", Collections.singletonList(EnumContato.LINKEDIN)));
+            pessoaMentorList.add(new PessoaMentor("Doutora Deolane", 22, EnumSexo.FEMININO,EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA,  EnumtipoAreaAtuacao.MENTOR_EM_INOVACAO, "    ECOA PUC Rio Rio de Janeiro 2022", Collections.singletonList(EnumContato.INSTAGRAM)));
+            pessoaMentorList.add(new PessoaMentor("Christine Vieira", 22, EnumSexo.FEMININO,EnumFormacao.DOUTORADO, EnumCidades.CIDADE_CRICIUMA, EnumtipoAreaAtuacao.DESENVOLVEDOR_BACKEND, "Hackathon Govtech Araguaína 2021", Collections.singletonList(EnumContato.TELEFONE)));
         }
         return pessoaMentorList;
     }
@@ -34,7 +34,6 @@ public class PessoaMentorDao {
     public static void salvarBanco(PessoaMentor pessoaMentor) throws SQLException, ClassNotFoundException {
         PessoaMentorRepository repository = new PessoaMentorRepository();
         repository.insere(pessoaMentor);
-
 
     }
 
@@ -73,12 +72,6 @@ public class PessoaMentorDao {
             idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe nova idade: ", pessoaMentors.get(0).getIdade()));
         } catch (NumberFormatException e) {
             ProcessosGerais.chamaMenuPrincipal();
-        }
-        String cidade = JOptionPane.showInputDialog(null, "Informe nova cidade." , pessoaMentors.get(0).getCidade());
-        if (cidade == null || cidade.isEmpty()) {
-            ProcessosGerais.chamaMenuPrincipal();
-        } else {
-            pessoaMentors.get(0).setCidade(cidade);
         }
 
 
@@ -127,6 +120,7 @@ public class PessoaMentorDao {
                 break;
             }
         }
+        ProcessosGerais.chamaMenuPrincipal();
     }
 
     public static Object[] ListaDeNomesDeMentores() {   //Lista de Nomes
