@@ -5,6 +5,7 @@ import repository.*;
 import javax.swing.*;
 import java.sql.SQLException;
 
+import static model.Login.exibirTelaLogin;
 import static modelController.ProcessosGerais.chamaMenuPrincipal;
 import static modelController.ProcessosGerais.exibirMensagemBoasVindas;
 
@@ -15,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException{
 
         exibirMensagemBoasVindas();
-        Login.exibirTelaLogin();
+        exibirTelaLogin();
         ProcessosGerais.chamaMenuPrincipal();
     }
 
