@@ -11,10 +11,10 @@ public  class PessoaMentor extends Entity {
     private EnumCidades enumCidades;
     private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
     private String historioDeMentorias;
-    private EnumContato contatos;
+    private List<EnumContato> contatos;
     private String DescricaoContato;
 
-    public PessoaMentor(String nome, int idade, EnumSexo enumSexo, EnumFormacao enumFormacao, EnumCidades enumCidades, EnumtipoAreaAtuacao enumtipoAreaAtuacao, String historioDeMentorias, EnumContato contatos, String descricaoContato) {
+    public PessoaMentor(String nome, int idade, EnumSexo enumSexo, EnumFormacao enumFormacao, EnumCidades enumCidades, EnumtipoAreaAtuacao enumtipoAreaAtuacao, String historioDeMentorias, List<EnumContato> contatos, String descricaoContato) {
         this.nome = nome;
         this.idade = idade;
         this.enumSexo = enumSexo;
@@ -24,10 +24,6 @@ public  class PessoaMentor extends Entity {
         this.historioDeMentorias = historioDeMentorias;
         this.contatos = contatos;
         DescricaoContato = descricaoContato;
-    }
-
-    public PessoaMentor(String nome, int idade, EnumSexo sexo, EnumFormacao formacao, EnumCidades cidade, EnumtipoAreaAtuacao enumtipoAreaAtuacao, String historicoDeMent, List<EnumContato> contatos, String descricaoContato) {
-        super();
     }
 
     public String getNome() {
@@ -87,11 +83,11 @@ public  class PessoaMentor extends Entity {
         this.enumCidades = enumCidades;
     }
 
-    public EnumContato getContatos() {
+    public List<EnumContato> getContatos() {
         return contatos;
     }
 
-    public void setContatos(EnumContato contatos) {
+    public void setContatos(List<EnumContato> contatos) {
         this.contatos = contatos;
     }
 
@@ -103,18 +99,6 @@ public  class PessoaMentor extends Entity {
         DescricaoContato = descricaoContato;
     }
 
-    @Override
-    public String toString() {
-        return "PessoaMentor{" +
-                "nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", enumSexo=" + enumSexo +
-                ", enumFormacao=" + enumFormacao +
-                ", enumCidades=" + enumCidades +
-                ", enumtipoAreaAtuacao=" + enumtipoAreaAtuacao +
-                ", historioDeMentorias='" + historioDeMentorias + '\'' +
-                ", contatos=" + contatos +
-                ", DescricaoContato='" + DescricaoContato + '\'' +
-                '}';
-    }
+
+
 }
