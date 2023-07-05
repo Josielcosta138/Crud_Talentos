@@ -1,12 +1,14 @@
 package tableForm;
 
 import model.PessoaMentor;
+import modelController.ProcessosGerais;
 import relatorios.RelatorioPessoaMentor;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
@@ -43,7 +45,13 @@ public class RelatorioMentorForm extends JPanel {
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent evt) {
                     frame.setVisible(false);
-
+                    try {
+                        ProcessosGerais.chamaMenuPrincipal();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             });
 
