@@ -9,8 +9,8 @@ public class RelatorioPessoaMentor extends javax.swing.table.AbstractTableModel{
     public static final int INDEX_ENUMSEXO = 1;
     public static final int INDEX_IDADE = 2;
     public static final int INDEX_CIDADE = 3;
-    public static final int INDEX_ESTADO = 4;
-    public static final int INDEX_HISTORICODEMENTORIAS = 5;
+    public static final int INDEX_HISTORICODEMENTORIAS = 4;
+    public static final int INDEX_FORMACAO = 5;
     public static final int INDEX_AREAATUACAO = 6;
     public static final int INDEX_CONTATO = 7;
     public static final int INDEX_ESCONDIDO = 8;
@@ -48,11 +48,11 @@ public class RelatorioPessoaMentor extends javax.swing.table.AbstractTableModel{
             case INDEX_IDADE:
                 return registroPessoa.getIdade();
             case INDEX_CIDADE:
-                return registroPessoa.getCidade();
-            case INDEX_ESTADO:
-                return registroPessoa.getEnumEstado();
+                return registroPessoa.getEnumCidades();
             case INDEX_HISTORICODEMENTORIAS:
                 return registroPessoa.getHistorioDeMentorias();
+            case INDEX_FORMACAO:
+                return registroPessoa.getEnumFormacao();
             case INDEX_AREAATUACAO:
                 return registroPessoa.getEnumtipoAreaAtuacao();
             case INDEX_CONTATO:

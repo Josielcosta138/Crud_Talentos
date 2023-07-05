@@ -17,7 +17,7 @@ import java.util.Vector;
 public class RelatorioMentorForm extends JPanel{
     private static final long serialVersionUID = 1L;
     public static final String[] nomeColunas =
-            {"Nome","Sexo","Idade","Cidade","Estado","Historico de Mentorias","Area de atuação" ,"Contato"};
+            {"Nome","Sexo","Idade","Cidade","Historico de Mentorias","Formação ","Area de atuação" ,"Contato"};
     protected JTable table;
     protected JScrollPane scroller;
     protected RelatorioPessoaMentor tabela;
