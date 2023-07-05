@@ -20,6 +20,6 @@ public enum EnumtipoAreaAtuacao {
         this.descricao = descricao;
     }
     public String getDescricao() {
-        return descricao;
+        return "1";
     }
 }

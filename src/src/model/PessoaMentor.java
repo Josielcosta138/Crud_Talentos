@@ -7,7 +7,6 @@ public  class PessoaMentor extends Entity {
     private int idade;
     private EnumSexo enumSexo;
     private EnumFormacao enumFormacao;
-
     private EnumCidades enumCidades;
     private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
     private String historioDeMentorias;

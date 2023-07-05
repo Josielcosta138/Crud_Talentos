@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
-
 public class PessoaMentorDao {
 
     static List<PessoaMentor> pessoaMentorList = new ArrayList<>();

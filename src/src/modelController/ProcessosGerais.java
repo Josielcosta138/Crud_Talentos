@@ -23,7 +23,9 @@ public class ProcessosGerais {
 
         switch (opcao) {
             case 0: //Cadastro de mentoria
-                chamaCadastroMentoria();
+                PessoaMentor pessoaMentor = chamaCadastroMentoria();
+                getPessoaMentorDao().salvarBanco(pessoaMentor);
+                //chamaCadastroMentoria();
                 break;
             case 1:  //Processos
                 chamaMenuProcessos();
