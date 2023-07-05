@@ -274,7 +274,7 @@ public class ProcessosGerais {
 
 
         private static void chamaRelatoriosPessoasTalentos () throws SQLException, ClassNotFoundException {
-            List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscaTodosPessoaMentor();
+            List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscarTodasPessoasMentor();
 
             if (pessoaMentors.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Lista Pessoa Talento esta Vazia!", "Erro", JOptionPane.INFORMATION_MESSAGE);
