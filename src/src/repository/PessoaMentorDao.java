@@ -34,8 +34,6 @@ public class PessoaMentorDao {
     public static void salvarBanco(PessoaMentor pessoaMentor) throws SQLException, ClassNotFoundException {
         PessoaMentorRepository repository = new PessoaMentorRepository();
         repository.insere(pessoaMentor);
-
-
     }
 
     public static List<PessoaMentor> buscarTodasPessoasMentor() {

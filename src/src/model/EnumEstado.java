@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public enum EnumEstado {
 
     SC("Sc"),
@@ -12,6 +14,12 @@ public enum EnumEstado {
         this.descricao = descricao;
     }
     public String getDescricao() {
-        return descricao;
+        if (Objects.equals(getDescricao(), "sp")){
+            return "1";
+
+        }else {
+            return "2";
+        }
+
     }
 }

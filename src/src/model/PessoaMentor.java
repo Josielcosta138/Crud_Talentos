@@ -1,6 +1,7 @@
 package model;
 
 import java.util.List;
+import java.util.Objects;
 
 public  class PessoaMentor extends Entity {
     private String nome;
@@ -48,7 +49,7 @@ public  class PessoaMentor extends Entity {
     }
 
     public String getCidade() {
-        return cidade;
+            return "1";
     }
 
     public void setCidade(String cidade) {
@@ -72,8 +73,18 @@ public  class PessoaMentor extends Entity {
     }
 
     public EnumtipoAreaAtuacao getEnumtipoAreaAtuacao() {
-        return enumtipoAreaAtuacao;
+        if (enumtipoAreaAtuacao == EnumtipoAreaAtuacao.MARKTING) {
+            return EnumtipoAreaAtuacao.values()[0]; // Retorna o primeiro valor (índice 0)
+
+        } else {
+            return EnumtipoAreaAtuacao.values()[1]; // Retorna o segundo valor (índice 1)
+        }
     }
+
+
+
+
+
 
     public void setEnumtipoAreaAtuacao(EnumtipoAreaAtuacao enumtipoAreaAtuacao) {
         this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
