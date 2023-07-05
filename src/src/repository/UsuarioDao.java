@@ -9,20 +9,26 @@ public class UsuarioDao {
         List<Usuario> usuarios = new ArrayList<>();
 
         Usuario usuario = new Usuario();
-        usuario.setLogin("Mentor 1");
+        usuario.setLogin("Alessandro");
         usuario.setSenha("123");
 
         Usuario usuario1 = new Usuario();
-        usuario1.setLogin("Mentor 2");
+        usuario1.setLogin("Josiel");
         usuario1.setSenha("123");
 
         Usuario usuario2 = new Usuario();
-        usuario2.setLogin("Mentor 3");
+        usuario2.setLogin("Ramon");
         usuario2.setSenha("123");
+
+        Usuario usuario3 = new Usuario();
+        usuario3.setLogin("Wesley");
+        usuario3.setSenha("123");
 
         usuarios.add(usuario);
         usuarios.add(usuario1);
         usuarios.add(usuario2);
+        usuarios.add(usuario3);
+
 
         return usuarios;
     }
