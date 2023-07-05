@@ -12,13 +12,14 @@ import static modelController.ProcessosGerais.chamaMenuPrincipal;
 public class Login {
 
     public static void exibirTelaLogin() throws SQLException, ClassNotFoundException {
-        String[] nomesMentores = {"Mentor 1"};
+            
+        String[] nomesMentores = {"Mentor 1", "Mentor 2", "Mentor 3"};
 
         JComboBox<String> nomesMentoresComboBox = new JComboBox<>(nomesMentores);
         JPasswordField passwordField = new JPasswordField();
 
         Object[] loginMessage = {
-                "Nome do Mentor:", nomesMentoresComboBox,
+                "Usuario do Mentor:", nomesMentoresComboBox,
                 "Senha:", passwordField
         };
 
@@ -40,7 +41,7 @@ public class Login {
             System.exit(0);
         }
     }
-    public static boolean verificarCredenciais(String nomeMentor, String password) {
+    public static boolean verificarCredenciais(String nomesMentores, String password) {
 
         return password.equals("123");
     }

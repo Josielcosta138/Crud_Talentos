@@ -12,8 +12,9 @@ public  class PessoaMentor extends Entity {
     private EnumtipoAreaAtuacao enumtipoAreaAtuacao;
     private String historioDeMentorias;
     private List<EnumContato> contatos;
+    private String DescricaoContato;
 
-    public PessoaMentor(String nome, int idade, EnumSexo enumSexo, EnumFormacao enumFormacao, EnumCidades enumCidades, EnumtipoAreaAtuacao enumtipoAreaAtuacao, String historioDeMentorias, List<EnumContato> contatos) {
+    public PessoaMentor(String nome, int idade, EnumSexo enumSexo, EnumFormacao enumFormacao, EnumCidades enumCidades, EnumtipoAreaAtuacao enumtipoAreaAtuacao, String historioDeMentorias, List<EnumContato> contatos, String descricaoContato) {
         this.nome = nome;
         this.idade = idade;
         this.enumSexo = enumSexo;
@@ -22,6 +23,7 @@ public  class PessoaMentor extends Entity {
         this.enumtipoAreaAtuacao = enumtipoAreaAtuacao;
         this.historioDeMentorias = historioDeMentorias;
         this.contatos = contatos;
+        DescricaoContato = descricaoContato;
     }
 
     public String getNome() {
@@ -87,6 +89,14 @@ public  class PessoaMentor extends Entity {
 
     public void setContatos(List<EnumContato> contatos) {
         this.contatos = contatos;
+    }
+
+    public String getDescricaoContato() {
+        return DescricaoContato;
+    }
+
+    public void setDescricaoContato(String descricaoContato) {
+        DescricaoContato = descricaoContato;
     }
 
     @Override

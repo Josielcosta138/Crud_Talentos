@@ -1,9 +1,12 @@
 package relatorios;
 import model.*;
+import modelController.ProcessosGerais;
+
 import javax.swing.table.AbstractTableModel;
+import java.util.List;
 import java.util.Vector;
 
-public class RelatorioPessoaMentor extends javax.swing.table.AbstractTableModel{
+public class RelatorioPessoaMentor extends AbstractTableModel{
     private static final long serialVersionUID = 1L;
     public static final int INDEX_NOME = 0;
     public static final int INDEX_ENUMSEXO = 1;
@@ -13,7 +16,8 @@ public class RelatorioPessoaMentor extends javax.swing.table.AbstractTableModel{
     public static final int INDEX_FORMACAO = 5;
     public static final int INDEX_AREAATUACAO = 6;
     public static final int INDEX_CONTATO = 7;
-    public static final int INDEX_ESCONDIDO = 8;
+    public static final int INDEX_DESCRICAOCONTATO = 8;
+    public static final int INDEX_ESCONDIDO = 9;
 
     protected String[] nomeColunas;
     protected Vector<PessoaMentor> vetorDados;
@@ -57,8 +61,9 @@ public class RelatorioPessoaMentor extends javax.swing.table.AbstractTableModel{
                 return registroPessoa.getEnumtipoAreaAtuacao();
             case INDEX_CONTATO:
                 return registroPessoa.getContatos();
-
-            default:
+            case INDEX_DESCRICAOCONTATO:
+                return registroPessoa.getDescricaoContato();
+                default:
                 return new Object();
         }
     }
