@@ -3,16 +3,38 @@ package model;
 public class Contato {
 
 
-    private String descricaoContato;
-
+    private static String descricaoContato;
     private EnumContato enumContato;
+
+    private static long id;
+    private static long Idd;
+
 
     public Contato(String descricaoContato, EnumContato enumContato) {
         this.descricaoContato = descricaoContato;
         this.enumContato = enumContato;
     }
 
-    public String getDescricaoContato() {
+
+
+    public static String getDescricaoContato() {
+        return descricaoContato;
+    }
+
+    public static long getId() {
+        return id;
+    }
+
+    public static long getIdd() {
+        return 1;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+
+    public static String getDescricaoContato() {
         return descricaoContato;
     }
 
@@ -20,13 +42,12 @@ public class Contato {
         this.descricaoContato = descricaoContato;
     }
 
-    public EnumContato getEnumContato() {
+
+
+    public static EnumContato getEnumContato() {
         return enumContato;
     }
 
-    public void setEnumContato(EnumContato enumContato) {
-        this.enumContato = enumContato;
-    }
 
     @Override
     public String toString() {
