@@ -270,12 +270,49 @@ public class ProcessosGerais {
                     }
 
                     break;
-                case 2: //
-
+                case 2: // Buscar Todos
+                    List<PessoaMentor> todosMentores = PessoaMentorDao.buscarTodasPessoasMentor();
+                    if (todosMentores.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Lista Pessoa Talento está vazia!", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                        chamaMenuPrincipal();
+                    } else {
+                        StringBuilder mensagem = new StringBuilder();
+                        mensagem.append("Todos os mentores:\n");
+                        for (PessoaMentor mentor : todosMentores) {
+                            mensagem.append("- ").append(mentor.getNome()).append("\n");
+                        }
+                        JOptionPane.showMessageDialog(null, mensagem.toString(), "Mentores Encontrados", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    chamaMenuPrincipal();
                     break;
-                case 3: //
 
+                case 3: // Buscar Por Nome
+                    List<PessoaMentor> todosMentoresBuscarNome = PessoaMentorDao.buscarTodasPessoasMentor();
+                    if (todosMentoresBuscarNome.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Lista Pessoa Talento está vazia!", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                        chamaMenuPrincipal();
+                    } else {
+                        String nomeMentor = JOptionPane.showInputDialog(null, "Digite o nome do mentor:",
+                                "Buscar mentor por nome", JOptionPane.QUESTION_MESSAGE);
+                        if (nomeMentor != null) {
+                            List<PessoaMentor> mentoresPorNome = PessoaMentorDao.buscarPorNome(nomeMentor);
+                            if (mentoresPorNome.isEmpty()) {
+                                JOptionPane.showMessageDialog(null, "Nenhum mentor encontrado com o nome informado.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                            } else {
+                                StringBuilder mensagem = new StringBuilder();
+                                mensagem.append("Mentores encontrados:\n");
+                                for (PessoaMentor mentor : mentoresPorNome) {
+                                    mensagem.append("- ").append(mentor.getNome()).append("\n");
+                                }
+                                JOptionPane.showMessageDialog(null, mensagem.toString(), "Mentores Encontrados", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        } else {
+                            chamaMenuPrincipal();
+                        }
+                    }
+                    chamaMenuPrincipal();
                     break;
+
                 case 4: //Voltar
                     chamaMenuPrincipal();
                     break;
