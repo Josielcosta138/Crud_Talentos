@@ -1,6 +1,6 @@
 package model;
 
-public class Contato {
+public class Contato extends Entity {
 
 
     private static String descricaoContato;
@@ -20,12 +20,10 @@ public class Contato {
         return descricaoContato;
     }
 
-    public static long getId() {
-        return id;
-    }
+
 
     public static long getIdd() {
-        return 1;
+        return 5;
     }
 
     public void setId(long id) {
