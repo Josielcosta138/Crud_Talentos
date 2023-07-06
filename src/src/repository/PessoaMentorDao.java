@@ -43,7 +43,7 @@ public class PessoaMentorDao {
     public static List<PessoaMentor> buscarPorNome(String nome){
         List<PessoaMentor> pessoaMentorFiltradas = new ArrayList<>();
         for (PessoaMentor pessoaMentor : pessoaMentorList){
-            if (pessoaMentor.getNome().contains(nome)){
+            if (pessoaMentor.getNome().equalsIgnoreCase(nome)){
                 pessoaMentorFiltradas.add(pessoaMentor);
             }
         }
