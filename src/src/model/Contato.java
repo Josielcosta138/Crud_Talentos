@@ -4,7 +4,7 @@ public class Contato {
 
 
     private static String descricaoContato;
-    private EnumContato enumContato;
+    private static EnumContato enumContato;
 
     private static long id;
     private static long Idd;
@@ -14,7 +14,6 @@ public class Contato {
         this.descricaoContato = descricaoContato;
         this.enumContato = enumContato;
     }
-
 
 
     public static String getDescricaoContato() {
@@ -34,14 +33,9 @@ public class Contato {
     }
 
 
-    public static String getDescricaoContato() {
-        return descricaoContato;
-    }
-
     public void setDescricaoContato(String descricaoContato) {
         this.descricaoContato = descricaoContato;
     }
-
 
 
     public static EnumContato getEnumContato() {
