@@ -13,6 +13,6 @@ public enum EnumCidades {
     }
 
     public String getDescricao() {
-        return descricao;
+        return "1";
     }
 }

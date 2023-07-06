@@ -23,8 +23,8 @@ public class ProcessosGerais {
 
         switch (opcao) {
             case 0: //Cadastro de mentoria
-                //PessoaMentor pessoaMentor = chamaCadastroMentoria();
-               // getPessoaMentorDao().salvarBanco(pessoaMentor);
+               // PessoaMentor pessoaMentor = chamaCadastroMentoria();
+                //getPessoaMentorDao().salvarBanco(pessoaMentor);
                 chamaCadastroMentoria();
                 break;
             case 1:  //Processos
@@ -203,19 +203,7 @@ public class ProcessosGerais {
 
         PessoaMentor pessoaMentor1 = new PessoaMentor(nome, idade, sexo, formacao, cidade, enumtipoAreaAtuacao, historicoDeMent,  contatos, descricaoContato);
         PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
-
-        StringBuilder relatorio = new StringBuilder();
-        relatorio.append(("Nome ")).append(nome).append("\n");
-        relatorio.append(("Idade ")).append(idade).append("\n");
-        relatorio.append(("Sexo ")).append(sexo).append("\n");
-        relatorio.append(("Cidade ")).append(cidade).append("\n");
-        relatorio.append(("Formação ")).append(formacao).append("\n");
-        relatorio.append(("Atuação ")).append(atuacao).append("\n");
-        relatorio.append(("Histórico de mentorias ")).append(historicoDeMent).append("\n");
-        relatorio.append(("Contato ")).append(contatos).append("\n");
-        relatorio.append(("Descrição Contato ")).append(descricaoContato).append("\n");
-
-        JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório Mentor", JOptionPane.INFORMATION_MESSAGE);
+      //  PessoaMentorDao.salvarBanco(pessoaMentor1);
         return chamaMenuPrincipal();
     }
 
