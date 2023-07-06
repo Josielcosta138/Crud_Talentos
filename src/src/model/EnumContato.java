@@ -1,5 +1,12 @@
 package model;
 
+import modelController.ProcessosGerais;
+import repository.PessoaMentorDao;
+
+import javax.swing.*;
+import java.sql.SQLException;
+import java.util.List;
+
 public enum EnumContato {
     TELEFONE("Telefone"),
     WHATSAPP("Whatsapp"),
@@ -17,3 +24,6 @@ public enum EnumContato {
     }
 
 }
+
+
+

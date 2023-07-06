@@ -23,9 +23,9 @@ public class ProcessosGerais {
 
         switch (opcao) {
             case 0: //Cadastro de mentoria
-                PessoaMentor pessoaMentor = chamaCadastroMentoria();
-                getPessoaMentorDao().salvarBanco(pessoaMentor);
-                //chamaCadastroMentoria();
+                //PessoaMentor pessoaMentor = chamaCadastroMentoria();
+               // getPessoaMentorDao().salvarBanco(pessoaMentor);
+                chamaCadastroMentoria();
                 break;
             case 1:  //Processos
                 chamaMenuProcessos();
@@ -89,7 +89,7 @@ public class ProcessosGerais {
         EnumCidades cidade = EnumCidades.CIDADE_CRICIUMA;
         if (selectionStatusCid.equals("GUARULHOS")) {
             cidade = EnumCidades.CIDADE_GUARULHOS;
-        } else if (selectionStatusCid.equals("")) {
+        } else if (selectionStatusCid.equals("PORTO ALEGRE")) {
             cidade = EnumCidades.CIDADE_PORTO_ALEGRE;
         }
 
@@ -156,6 +156,7 @@ public class ProcessosGerais {
 
 
         List<EnumContato> contatos = new ArrayList<>();
+
 
         boolean cadastrarMaisContatos = true;
         String descricaoContato = null;
@@ -248,10 +249,26 @@ public class ProcessosGerais {
 
             switch (menuProcessos) {
                 case 0: //Alterar
-                    PessoaMentorDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
+                    List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscarTodasPessoasMentor();
+                    if (pessoaMentors.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Lista Pessoa Talento esta Vazia!", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                        chamaMenuPrincipal();
+                    } else {
+                        PessoaMentorDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
+                    }
+
+
+
                     break;
                 case 1: //Remover
-                    PessoaMentorDao.excluirPessoasMentor(pessoaTalentos1.get(0));
+                    List<PessoaMentor> pessoaMentors1 = PessoaMentorDao.buscarTodasPessoasMentor();
+                    if (pessoaMentors1.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Lista Pessoa Talento esta Vazia!", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                        chamaMenuPrincipal();
+                    } else {
+                        PessoaMentorDao.excluirPessoasMentor(pessoaTalentos1.get(0));
+                    }
+
                     break;
                 case 2: //
 
