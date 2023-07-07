@@ -2,12 +2,12 @@ package model;
 
 public class Entity {
 
-    private static long id;
-    public static long getId() {
+    private Integer id;
+    public  Integer getId() {
         return id ;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }

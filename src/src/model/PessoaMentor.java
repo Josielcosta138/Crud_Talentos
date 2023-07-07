@@ -59,8 +59,8 @@ public  class PessoaMentor extends Entity {
         return historioDeMentorias;
     }
 
-    public long getIdd() {
-        return super.getId();
+    public int getIdd() {
+        return (int) super.getId();
     }
 
     public void setHistorioDeMentorias(String historioDeMentorias) {

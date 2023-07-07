@@ -245,8 +245,6 @@ public class ProcessosGerais {
                         PessoaMentorDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
                     }
 
-
-
                     break;
                 case 1: //Remover
                     List<PessoaMentor> pessoaMentors1 = PessoaMentorDao.buscarTodasPessoasMentor();
