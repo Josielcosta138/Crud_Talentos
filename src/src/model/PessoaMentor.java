@@ -13,6 +13,9 @@ public  class PessoaMentor extends Entity {
     private List<EnumContato> contatos;
     private String DescricaoContato;
 
+    public PessoaMentor() {
+    }
+
     public PessoaMentor(String nome, int idade, EnumSexo enumSexo, EnumFormacao enumFormacao, EnumCidades enumCidades, EnumtipoAreaAtuacao enumtipoAreaAtuacao, String historioDeMentorias, List<EnumContato> contatos, String descricaoContato) {
         this.nome = nome;
         this.idade = idade;
@@ -24,6 +27,8 @@ public  class PessoaMentor extends Entity {
         this.contatos = contatos;
         DescricaoContato = descricaoContato;
     }
+
+
 
     public String getNome() {
         return nome;
@@ -52,6 +57,10 @@ public  class PessoaMentor extends Entity {
 
     public String getHistorioDeMentorias() {
         return historioDeMentorias;
+    }
+
+    public long getIdd() {
+        return super.getId();
     }
 
     public void setHistorioDeMentorias(String historioDeMentorias) {

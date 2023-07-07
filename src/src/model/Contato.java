@@ -23,7 +23,7 @@ public class Contato extends Entity {
 
 
     public static long getIdd() {
-        return 5;
+        return 1;
     }
 
     public void setId(long id) {

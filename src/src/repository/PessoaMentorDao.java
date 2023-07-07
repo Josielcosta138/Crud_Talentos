@@ -30,6 +30,19 @@ public class PessoaMentorDao {
     }
 
     public static List<PessoaMentor> buscarTodasPessoasMentor() {
+        System.out.println("TESTE"+pessoaMentorList);
+        PessoaMentorRepository pessoaMentorRepository = new PessoaMentorRepository();
+
+        try {
+            pessoaMentorList = pessoaMentorRepository.busca();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("teste erro "+e);
+        }
+
+       // PessoaMentorRepository repository = new PessoaMentorRepository();
+       // Object[] objects = ListaDeNomesDeMentores();
         return pessoaMentorList;
     }
 
@@ -237,7 +250,7 @@ public class PessoaMentorDao {
             pessoaMentors.get(0).setHistorioDeMentorias(historicoMent);
         }
 
-        //PessoaMentorDao.salvarupdate((PessoaMentor) pessoaMentors.get(0));
+        PessoaMentorDao.salvarupdate((PessoaMentor) pessoaMentors.get(0));
 
         JOptionPane.showMessageDialog(null,"Dados alterados com sucesso!");
         ProcessosGerais.chamaMenuPrincipal();

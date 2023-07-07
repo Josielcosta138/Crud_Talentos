@@ -23,8 +23,8 @@ public class ProcessosGerais {
 
         switch (opcao) {
             case 0: //Cadastro de mentoria
-               // PessoaMentor pessoaMentor = chamaCadastroMentoria();
-                //getPessoaMentorDao().salvarBanco(pessoaMentor);
+                PessoaMentor pessoaMentor = chamaCadastroMentoria();
+                getPessoaMentorDao().salvarBanco(pessoaMentor);
                 chamaCadastroMentoria();
                 break;
             case 1:  //Processos
@@ -203,7 +203,7 @@ public class ProcessosGerais {
 
         PessoaMentor pessoaMentor1 = new PessoaMentor(nome, idade, sexo, formacao, cidade, enumtipoAreaAtuacao, historicoDeMent,  contatos, descricaoContato);
         PessoaMentorDao.salvarPessoaMentor(pessoaMentor1);
-      //  PessoaMentorDao.salvarBanco(pessoaMentor1);
+        PessoaMentorDao.salvarBanco(pessoaMentor1);
         return chamaMenuPrincipal();
     }
 
