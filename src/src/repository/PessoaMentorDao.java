@@ -66,7 +66,7 @@ public class PessoaMentorDao {
                 "Processo", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
         List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscarPorNome((String) selection);
 
-
+        //teste
         if (selection != null) {
 
             String nome = JOptionPane.showInputDialog(null, "Informe novo nome.", pessoaMentors.get(0).getNome());
