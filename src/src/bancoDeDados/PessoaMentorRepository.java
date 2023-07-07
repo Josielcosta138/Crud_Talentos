@@ -15,7 +15,6 @@ public class PessoaMentorRepository {
         Class.forName("com.mysql.cj.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306/crudtalentos";
         Connection connection = DriverManager.getConnection(url, "root", "janice27");
-
         return connection;
 
     }
@@ -29,14 +28,10 @@ public class PessoaMentorRepository {
         stmt1.setString(2, pessoaMentor.getEnumSexo().toString());
         stmt1.setInt(3, pessoaMentor.getIdade());
         stmt1.setString(4, pessoaMentor.getHistorioDeMentorias());
-        stmt1.setString(5, pessoaMentor.getEnumFormacao().getDescricao());
+        stmt1.setString(5, pessoaMentor.getEnumFormacao().toString());
         stmt1.setString(6, pessoaMentor.getEnumCidades().getDescricao());
         stmt1.setString(7, pessoaMentor.getEnumtipoAreaAtuacao().getDescricao());
-
-
-
-        stmt1.executeUpdate();
-
+                stmt1.executeUpdate();
 
         PreparedStatement stmt2 = connection.prepareStatement("INSERT INTO contato  VALUES (null, ?, ?, ?)");
        // stmt2.setLong(1, Contato.getId());
@@ -46,7 +41,6 @@ public class PessoaMentorRepository {
         stmt2.executeUpdate();
         connection.close();
     }
-
 
 
     public List<PessoaMentor> busca() throws SQLException, ClassNotFoundException {
@@ -61,8 +55,9 @@ public class PessoaMentorRepository {
             pessoaMentor.setEnumSexo(EnumSexo.valueOf(resultSet.getString(3)));
             pessoaMentor.setIdade(resultSet.getInt(4));
             pessoaMentor.setHistorioDeMentorias(resultSet.getString(5));
-            pessoaMentor.setEnumFormacao(EnumFormacao.ENSINO_FUNDAMENTAL);
+            pessoaMentor.setEnumFormacao(EnumFormacao.valueOf(resultSet.getString(6)));
             pessoaMentor.setEnumCidades(EnumCidades.CIDADE_CRICIUMA);
+            pessoaMentor.setEnumCidades(EnumCidades.CIDADE_GUARULHOS);
             pessoaMentor.setEnumtipoAreaAtuacao(EnumtipoAreaAtuacao.MARKTING);
             pessoaMentor.setContatos(Collections.singletonList(EnumContato.TELEFONE));
             pessoaMentor.setDescricaoContato(resultSet.getString(8));
@@ -76,13 +71,23 @@ public class PessoaMentorRepository {
     public void update(PessoaMentor pessoaMentor) throws SQLException, ClassNotFoundException {
         Connection connection = getConnection();
         PreparedStatement stmt1 = connection.prepareStatement("UPDATE pessoamentor " +
-                "SET nome = ?, idade = ?, sexo = ? WHERE nome = ?");
+                "SET nome = ?, idade = ?, sexo = ? WHERE id = ?");
         stmt1.setString(1, pessoaMentor.getNome());
         stmt1.setInt(2, pessoaMentor.getIdade());
         stmt1.setInt(3, EnumSexo.MASCULINO.ordinal());
-        stmt1.setString(4, pessoaMentor.getNome());
+        //stmt1.setInt(4, pessoaMentor.getId().intValue());
 
         stmt1.executeUpdate();
+        connection.close();
+    }
+
+
+    public void delete(PessoaMentor pessoaMentor) throws SQLException, ClassNotFoundException {
+        Connection connection = getConnection();
+        PreparedStatement stmt = connection.prepareStatement("DELETE FROM pessoamentor" +
+                " WHERE id = ?");
+        //stmt.setInt(1, (int) Entity.getId());
+        stmt.executeUpdate();
         connection.close();
     }
 

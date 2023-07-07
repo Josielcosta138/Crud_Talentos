@@ -250,7 +250,7 @@ public class PessoaMentorDao {
             pessoaMentors.get(0).setHistorioDeMentorias(historicoMent);
         }
 
-        PessoaMentorDao.salvarupdate((PessoaMentor) pessoaMentors.get(0));
+        //PessoaMentorDao.salvarupdate((PessoaMentor) pessoaMentors.get(0));
 
         JOptionPane.showMessageDialog(null,"Dados alterados com sucesso!");
         ProcessosGerais.chamaMenuPrincipal();
@@ -267,6 +267,8 @@ public class PessoaMentorDao {
             String selectedMentor = (String) selection;
             List<PessoaMentor> pessoaMentors = PessoaMentorDao.buscarPorNome(selectedMentor);
             for (PessoaMentor mentor : pessoaMentors) {
+                PessoaMentorRepository pessoaRepository = new PessoaMentorRepository();
+                pessoaRepository.delete(mentor);
                 pessoaMentorList.remove(mentor);
                 ProcessosGerais.chamaMenuPrincipal();
                 break;

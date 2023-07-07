@@ -6,7 +6,7 @@ public enum EnumCidades {
     CIDADE_GUARULHOS("Guarulhos"),
     CIDADE_PORTO_ALEGRE("Porto alegre");
 
-    private final String descricao;
+    private  String descricao;
 
     EnumCidades(String descricao) {
         this.descricao = descricao;
