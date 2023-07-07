@@ -47,18 +47,7 @@ public class PessoaMentorRepository {
         connection.close();
     }
 
-    public void update(PessoaMentor pessoaMentor) throws SQLException, ClassNotFoundException {
-        Connection connection = getConnection();
 
-        PreparedStatement stmt1 = connection.prepareStatement("update pessoamentor " +
-                "SET nome = ?,  WHERE id = ?");
-        stmt1.setString(1, pessoaMentor.getNome());
-        stmt1.setLong(2, pessoaMentor.getIdd());
-
-
-        stmt1.executeUpdate();
-        connection.close();
-    }
 
     public List<PessoaMentor> busca() throws SQLException, ClassNotFoundException {
         List<PessoaMentor> pessoaMentors = new ArrayList<>();
@@ -80,13 +69,36 @@ public class PessoaMentorRepository {
 
             pessoaMentors.add(pessoaMentor);
         }
-
         connection.close();
         return pessoaMentors;
-
-
-
     }
+
+    public void update(PessoaMentor pessoaMentor) throws SQLException, ClassNotFoundException {
+        Connection connection = getConnection();
+        PreparedStatement stmt1 = connection.prepareStatement("update pessoamentor " +
+                "SET nome = ?, idade = ?, sexo = ? WHERE nome = ?");
+        stmt1.setString(1, pessoaMentor.getNome());
+        stmt1.setInt(2, pessoaMentor.getIdade());
+        stmt1.setInt(3,EnumSexo.MASCULINO.ordinal());
+        stmt1.setString(4, pessoaMentor.getNome());
+        //stmt1.setInt(4, (int) pessoaMentor.getId());
+
+
+        /*
+        pessoaMentor.setEnumSexo(EnumSexo.getType(resultSet.getInt(4)));
+        pessoaMentor.setIdade(resultSet.getInt(4));
+        pessoaMentor.setHistorioDeMentorias(resultSet.getString(5));
+        pessoaMentor.setEnumFormacao(EnumFormacao.ENSINO_FUNDAMENTAL);
+        pessoaMentor.setEnumCidades(EnumCidades.CIDADE_CRICIUMA);
+        pessoaMentor.setEnumtipoAreaAtuacao(EnumtipoAreaAtuacao.MARKTING);
+        pessoaMentor.setContatos(Collections.singletonList(EnumContato.TELEFONE));
+        pessoaMentor.setDescricaoContato(resultSet.getString(8)); */
+
+        stmt1.executeUpdate();
+        connection.close();
+    }
+
+
 
 }
 
