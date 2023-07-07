@@ -273,7 +273,7 @@ public class ProcessosGerais {
                     chamaMenuPrincipal();
                     break;
 
-
+                // TESTE
                 case 3: // Buscar Por Nome
                     List<PessoaMentor> todosMentoresBuscarNome = PessoaMentorDao.buscarTodasPessoasMentor();
                     if (todosMentoresBuscarNome.isEmpty()) {
@@ -290,7 +290,11 @@ public class ProcessosGerais {
                                 StringBuilder mensagem = new StringBuilder();
                                 mensagem.append("Mentores encontrados:\n");
                                 for (PessoaMentor mentor : mentoresPorNome) {
-                                    mensagem.append("- ").append(mentor.getNome()).append("\n");
+                                    mensagem.append(" Nome - ").append(mentor.getNome()).append("\n");
+                                    mensagem.append(" Idade - ").append(mentor.getIdade()).append("\n");
+                                    mensagem.append(" Formação - ").append(mentor.getEnumFormacao()).append("\n");
+                                    mensagem.append(" Histórico de Mentorias - ").append(mentor.getHistorioDeMentorias()).append("\n");
+
                                 }
                                 JOptionPane.showMessageDialog(null, mensagem.toString(), "Mentores Encontrados", JOptionPane.INFORMATION_MESSAGE);
                             }
