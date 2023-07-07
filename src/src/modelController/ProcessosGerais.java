@@ -223,6 +223,7 @@ public class ProcessosGerais {
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    chamaMenuProcessos();
                     break;
             }
         }
@@ -244,7 +245,7 @@ public class ProcessosGerais {
                     } else {
                         PessoaMentorDao.alterarPessoaMentoria(pessoaTalentos1.get(0));
                     }
-
+                    //chamaMenuPrincipal();
                     break;
                 case 1: //Remover
                     List<PessoaMentor> pessoaMentors1 = PessoaMentorDao.buscarTodasPessoasMentor();
@@ -271,6 +272,7 @@ public class ProcessosGerais {
                     }
                     chamaMenuPrincipal();
                     break;
+
 
                 case 3: // Buscar Por Nome
                     List<PessoaMentor> todosMentoresBuscarNome = PessoaMentorDao.buscarTodasPessoasMentor();
